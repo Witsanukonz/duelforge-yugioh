@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Forbidden & Limited List · Yu-Gi-Oh Deck Builder{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero--banlist">
+    <div>
+        <p class="kicker"><span></span>Duel regulations</p>
+        <h1>Forbidden &amp; <em>Limited</em></h1>
+        <p>Know the law of the arena. Every deck is checked against the selected official format before battle.</p>
+    </div>
+    <div class="format-switch" role="group" aria-label="Card format">
+        <a href="?format=TCG" class="{% if selected_format == 'TCG' %}is-active{% endif %}">TCG</a>
+        <a href="?format=OCG" class="{% if selected_format == 'OCG' %}is-active{% endif %}">OCG</a>
+    </div>
+</section>
+
+{% if banlist %}
+<div class="banlist-summary">
+    <div><span>Active decree</span><strong>{{ banlist.name }}</strong></div>
+    <div><span>Effective</span><strong>{{ banlist.effective_date|date:"d M Y"|default:"Current" }}</strong></div>
+    <div><span>Format</span><strong>{{ banlist.format }}</strong></div>
+    {% if banlist.source_url %}<a href="{{ banlist.source_url }}" target="_blank" rel="noopener">Official source ↗</a>{% endif %}
+</div>
+
+<form class="filter-bar filter-bar--banlist" method="get">
+    <input type="hidden" name="format" value="{{ selected_format }}">
+    {% if selected_status %}<input type="hidden" name="status" value="{{ selected_status }}">{% endif %}
+    <label class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input type="search" name="q" value="{{ query }}" placeholder="Search restricted cards…"></label>
+    <button class="button button--gold" type="submit">Search list</button>
+</form>
+
+<nav class="banlist-statuses" aria-label="Filter by restriction status">
+    <a class="ban-status-filter {% if not selected_status %}is-active{% endif %}" href="?format={{ selected_format }}{% if query %}&amp;q={{ query|urlencode }}{% endif %}">
+        <span class="ban-status-filter__icon">◇</span><span>All restricted<small>All statuses</small></span><strong>{{ status_counts.total }}</strong>
+    </a>
+    <a class="ban-status-filter ban-status-filter--forbidden {% if selected_status == 'FORBIDDEN' %}is-active{% endif %}" href="?format={{ selected_format }}&amp;status=FORBIDDEN{% if query %}&amp;q={{ query|urlencode }}{% endif %}">
+        <span class="ban-status-filter__icon">×</span><span>Forbidden<small>Banned · 0 copies</small></span><strong>{{ status_counts.forbidden }}</strong>
+    </a>
+    <a class="ban-status-filter ban-status-filter--limited {% if selected_status == 'LIMITED' %}is-active{% endif %}" href="?format={{ selected_format }}&amp;status=LIMITED{% if query %}&amp;q={{ query|urlencode }}{% endif %}">
+        <span class="ban-status-filter__icon">1</span><span>Limited<small>Maximum 1 copy</small></span><strong>{{ status_counts.limited }}</strong>
+    </a>
+    <a class="ban-status-filter ban-status-filter--semi_limited {% if selected_status == 'SEMI_LIMITED' %}is-active{% endif %}" href="?format={{ selected_format }}&amp;status=SEMI_LIMITED{% if query %}&amp;q={{ query|urlencode }}{% endif %}">
+        <span class="ban-status-filter__icon">2</span><span>Semi-Limited<small>Maximum 2 copies</small></span><strong>{{ status_counts.semi_limited }}</strong>
+    </a>
+</nav>
+
+<div class="result-line result-line--banlist">
+    <span>{% if page_obj.paginator.count %}Showing {{ page_obj.start_index }}–{{ page_obj.end_index }} of {{ page_obj.paginator.count }} restricted cards{% else %}Showing 0 restricted cards{% endif %}</span>
+    {% if query or selected_status %}<a href="?format={{ selected_format }}">Clear filters</a>{% endif %}
+</div>
+
+<section class="card-grid ban-card-grid" aria-label="Restricted cards">
+    {% for entry in entries %}
+        <article class="archive-card ban-card ban-card--{{ entry.status|lower }}">
+            <a class="archive-card__image" href="{% url 'cards_page:detail' entry.card.card_id %}?return={{ banlist_return_url|urlencode }}" aria-label="View {{ entry.card.name }} · {{ entry.get_status_display }}">
+                <img src="{{ entry.card.local_image_url }}" alt="{{ entry.card.name }}" loading="lazy">
+                <span class="archive-card__shine" aria-hidden="true"></span>
+                <span class="ban-card__ribbon"><i aria-hidden="true"></i>{{ entry.get_status_display }}</span>
+                <span class="ban-card__limit" aria-label="Maximum {{ entry.max_copies }} copies">
+                    <strong>{{ entry.max_copies }}</strong>
+                    <small>{% if entry.max_copies == 0 %}Banned{% else %}Limit{% endif %}</small>
+                </span>
+            </a>
+            <div class="archive-card__body">
+                <div class="archive-card__meta">
+                    <span>{{ entry.card.attribute|default:entry.card.frame_type|default:"Card" }}</span>
+                    <span class="ban-card__copy-rule">{{ entry.max_copies }} {% if entry.max_copies == 1 %}copy{% else %}copies{% endif %}</span>
+                </div>
+                <h2><a href="{% url 'cards_page:detail' entry.card.card_id %}?return={{ banlist_return_url|urlencode }}">{{ entry.card.name }}</a></h2>
+                <p>{{ entry.card.card_type }}</p>
+            </div>
+        </article>
+    {% empty %}
+        <div class="empty-state">
+            <span class="empty-state__sigil">◇</span>
+            <h2>No restricted cards found</h2>
+            <p>Try another name or clear the selected restriction.</p>
+        </div>
+    {% endfor %}
+</section>
+{% if page_obj.paginator.num_pages > 1 %}
+<nav class="pagination" aria-label="Ban List pages">
+    {% if page_obj.has_previous %}<a href="?{{ pagination_query }}page={{ page_obj.previous_page_number }}">← Previous</a>{% endif %}
+    <span>Page {{ page_obj.number }} <small>of {{ page_obj.paginator.num_pages }}</small></span>
+    {% if page_obj.has_next %}<a href="?{{ pagination_query }}page={{ page_obj.next_page_number }}">Next →</a>{% endif %}
+</nav>
+{% endif %}
+{% else %}
+<div class="empty-state empty-state--wide">
+    <span class="empty-state__sigil">◇</span>
+    <h2>No active {{ selected_format }} ban list yet</h2>
+    <p>Add a ban list and entries in Django Admin. The deck validator is ready to use them immediately.</p>
+    {% if request.user.is_staff %}<a class="button button--gold" href="{% url 'admin:banlists_banlist_add' %}">Open admin</a>{% endif %}
+</div>
+{% endif %}
+{% endblock %}

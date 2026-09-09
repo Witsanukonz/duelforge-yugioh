@@ -1,0 +1,23 @@
+<article class="deck-tile {% if deck.is_sample %}deck-tile--sample{% endif %}">
+    <div class="deck-tile__art">
+        {% if deck.listing_cover_url %}<img src="{{ deck.listing_cover_url }}" alt="" loading="lazy">{% endif %}
+        <span class="deck-tile__sigil" aria-hidden="true">◇</span>
+        <div class="deck-tile__badges">
+            <span>{{ deck.format }}</span>
+            {% if deck.is_sample %}<span>Featured sample</span>{% elif deck.owner == request.user %}<span>Your deck</span>{% elif deck.is_public %}<span>Public</span>{% endif %}
+        </div>
+    </div>
+    <div class="deck-tile__body">
+        <p>{% if deck.is_sample %}{{ deck.sample_archetype|default:"Sample Deck" }}{% else %}{{ deck.deck_type|default:"Custom strategy" }}{% endif %}</p>
+        <h2><a href="{% url 'decks_page:builder' deck.pk %}">{{ deck.name }}</a></h2>
+        <div class="deck-counts">
+            <span><strong>{{ deck.main_count }}</strong>Main</span>
+            <span><strong>{{ deck.extra_count }}</strong>Extra</span>
+            <span><strong>{{ deck.side_count }}</strong>Side</span>
+        </div>
+        <div class="deck-tile__footer">
+            <span>{% if deck.is_sample %}Local library{% else %}by {{ deck.owner.username }}{% endif %}</span>
+            <a href="{% url 'decks_page:builder' deck.pk %}">{% if deck.is_sample %}View deck{% elif deck.owner == request.user %}Edit deck{% else %}Inspect deck{% endif %} →</a>
+        </div>
+    </div>
+</article>

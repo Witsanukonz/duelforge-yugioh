@@ -1,0 +1,443 @@
+{
+  "akiza-black-rose": {
+    "archetype": "Black Rose",
+    "description": "Character deck from the Yu-Gi-Oh! 5D's era. Source: isaiasgv/yugi-decks.",
+    "era": "5D'S",
+    "format": "TCG",
+    "name": "Akiza — Black Rose",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/5ds/Akiza (Black Rose).ydk"
+  },
+  "aoi-trickstar": {
+    "archetype": "Trickstar",
+    "description": "Character deck from the Yu-Gi-Oh! VRAINS era. Source: isaiasgv/yugi-decks.",
+    "era": "VRAINS",
+    "format": "TCG",
+    "name": "Aoi — Trickstar",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/vrains/Aoi (Trickstar).ydk"
+  },
+  "aporia-meklord": {
+    "archetype": "Meklord",
+    "description": "Character deck from the Yu-Gi-Oh! 5D's era. Source: isaiasgv/yugi-decks.",
+    "era": "5D'S",
+    "format": "TCG",
+    "name": "Aporia — Meklord",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/5ds/Aporia (Meklord).ydk"
+  },
+  "aster-destiny-hero": {
+    "archetype": "Destiny HERO",
+    "description": "Character deck from the Yu-Gi-Oh! GX era. Source: isaiasgv/yugi-decks.",
+    "era": "GX",
+    "format": "TCG",
+    "name": "Aster — Destiny HERO",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/gx/Aster (Destiny HERO).ydk"
+  },
+  "atem-dsod": {
+    "archetype": "DSOD",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Atem — DSOD",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Atem (DSOD).ydk"
+  },
+  "atem-memory-world": {
+    "archetype": "Memory World",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Atem — Memory World",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Atem (Memory World).ydk"
+  },
+  "atticus-red-eyes-darkness": {
+    "archetype": "Red-Eyes Darkness",
+    "description": "Character deck from the Yu-Gi-Oh! GX era. Source: isaiasgv/yugi-decks.",
+    "era": "GX",
+    "format": "TCG",
+    "name": "Atticus — Red-Eyes Darkness",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/gx/Atticus (Red-Eyes Darkness).ydk"
+  },
+  "bakura-occult": {
+    "archetype": "Occult",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Bakura — Occult",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Bakura (Occult).ydk"
+  },
+  "bastion-element": {
+    "archetype": "Element",
+    "description": "Character deck from the Yu-Gi-Oh! GX era. Source: isaiasgv/yugi-decks.",
+    "era": "GX",
+    "format": "TCG",
+    "name": "Bastion — Element",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/gx/Bastion (Element).ydk"
+  },
+  "chazz-ojama-vwxyz": {
+    "archetype": "Ojama VWXYZ",
+    "description": "Character deck from the Yu-Gi-Oh! GX era. Source: isaiasgv/yugi-decks.",
+    "era": "GX",
+    "format": "TCG",
+    "name": "Chazz — Ojama VWXYZ",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/gx/Chazz (Ojama VWXYZ).ydk"
+  },
+  "crow-blackwing": {
+    "archetype": "Blackwing",
+    "description": "Character deck from the Yu-Gi-Oh! 5D's era. Source: isaiasgv/yugi-decks.",
+    "era": "5D'S",
+    "format": "TCG",
+    "name": "Crow — Blackwing",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/5ds/Crow (Blackwing).ydk"
+  },
+  "dark-jaden-evil-hero": {
+    "archetype": "Evil HERO",
+    "description": "Character deck from the Yu-Gi-Oh! GX era. Source: isaiasgv/yugi-decks.",
+    "era": "GX",
+    "format": "TCG",
+    "name": "Dark Jaden — Evil HERO",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/gx/Dark Jaden (Evil HERO).ydk"
+  },
+  "ishizu-spirits": {
+    "archetype": "Spirits",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Ishizu — Spirits",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Ishizu (Spirits).ydk"
+  },
+  "jack-resonator": {
+    "archetype": "Resonator",
+    "description": "Character deck from the Yu-Gi-Oh! 5D's era. Source: isaiasgv/yugi-decks.",
+    "era": "5D'S",
+    "format": "TCG",
+    "name": "Jack — Resonator",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/5ds/Jack (Resonator).ydk"
+  },
+  "jaden-heroes": {
+    "archetype": "HEROes",
+    "description": "Character deck from the Yu-Gi-Oh! GX era. Source: isaiasgv/yugi-decks.",
+    "era": "GX",
+    "format": "TCG",
+    "name": "Jaden — HEROes",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/gx/Jaden (HEROes).ydk"
+  },
+  "jaden-neos": {
+    "archetype": "Neos",
+    "description": "Character deck from the Yu-Gi-Oh! GX era. Source: isaiasgv/yugi-decks.",
+    "era": "GX",
+    "format": "TCG",
+    "name": "Jaden — Neos",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/gx/Jaden (Neos).ydk"
+  },
+  "joey-battle-city": {
+    "archetype": "Battle City",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Joey — Battle City",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Joey (Battle City).ydk"
+  },
+  "joey-doma-hermos": {
+    "archetype": "Doma Hermos",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Joey — Doma Hermos",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Joey (Doma Hermos).ydk"
+  },
+  "joey-duelist-kingdom": {
+    "archetype": "Duelist Kingdom",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Joey — Duelist Kingdom",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Joey (Duelist Kingdom).ydk"
+  },
+  "kaiba-battle-city": {
+    "archetype": "Battle City",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Kaiba — Battle City",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Kaiba (Battle City).ydk"
+  },
+  "kaiba-doma": {
+    "archetype": "Doma",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Kaiba — Doma",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Kaiba (Doma).ydk"
+  },
+  "kaiba-dsod-modern": {
+    "archetype": "DSOD Modern",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Kaiba — DSOD Modern",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Kaiba (DSOD Modern).ydk"
+  },
+  "kaiba-duelist-kingdom": {
+    "archetype": "Duelist Kingdom",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Kaiba — Duelist Kingdom",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Kaiba (Duelist Kingdom).ydk"
+  },
+  "kaito-galaxy-eyes": {
+    "archetype": "Galaxy-Eyes",
+    "description": "Character deck from the Yu-Gi-Oh! Zexal era. Source: isaiasgv/yugi-decks.",
+    "era": "ZEXAL",
+    "format": "TCG",
+    "name": "Kaito — Galaxy-Eyes",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/zexal/Kaito (Galaxy-Eyes).ydk"
+  },
+  "leo-morphtronic": {
+    "archetype": "Morphtronic",
+    "description": "Character deck from the Yu-Gi-Oh! 5D's era. Source: isaiasgv/yugi-decks.",
+    "era": "5D'S",
+    "format": "TCG",
+    "name": "Leo — Morphtronic",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/5ds/Leo (Morphtronic).ydk"
+  },
+  "luna-ancient-fairy": {
+    "archetype": "Ancient Fairy",
+    "description": "Character deck from the Yu-Gi-Oh! 5D's era. Source: isaiasgv/yugi-decks.",
+    "era": "5D'S",
+    "format": "TCG",
+    "name": "Luna — Ancient Fairy",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/5ds/Luna (Ancient Fairy).ydk"
+  },
+  "mai-harpies": {
+    "archetype": "Harpies",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Mai — Harpies",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Mai (Harpies).ydk"
+  },
+  "marik-battle-city": {
+    "archetype": "Battle City",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Marik — Battle City",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Marik (Battle City).ydk"
+  },
+  "pegasus-toons": {
+    "archetype": "Toons",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Pegasus — Toons",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Pegasus (Toons).ydk"
+  },
+  "revolver-rokket": {
+    "archetype": "Rokket",
+    "description": "Character deck from the Yu-Gi-Oh! VRAINS era. Source: isaiasgv/yugi-decks.",
+    "era": "VRAINS",
+    "format": "TCG",
+    "name": "Revolver — Rokket",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/vrains/Revolver (Rokket).ydk"
+  },
+  "yubel": {
+    "archetype": "Yubel",
+    "description": "Character deck from the Yu-Gi-Oh! GX era. Source: isaiasgv/yugi-decks.",
+    "era": "GX",
+    "format": "TCG",
+    "name": "Yubel",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/gx/Yubel.ydk"
+  },
+  "yugi-battle-city": {
+    "archetype": "Battle City",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Yugi — Battle City",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Yugi (Battle City).ydk"
+  },
+  "yugi-doma": {
+    "archetype": "Doma",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Yugi — Doma",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Yugi (Doma).ydk"
+  },
+  "yugi-duelist-kingdom": {
+    "archetype": "Duelist Kingdom",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Yugi — Duelist Kingdom",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Yugi (Duelist Kingdom).ydk"
+  },
+  "yugi-final-duel": {
+    "archetype": "Final Duel",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Yugi — Final Duel",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Yugi (Final Duel).ydk"
+  },
+  "yugi-manga-final": {
+    "archetype": "Manga Final",
+    "description": "Character deck from the Duel Monsters era. Source: isaiasgv/yugi-decks.",
+    "era": "DM",
+    "format": "TCG",
+    "name": "Yugi — Manga Final",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/dm/Yugi (Manga Final).ydk"
+  },
+  "yugo-speedroid": {
+    "archetype": "Speedroid",
+    "description": "Character deck from the Yu-Gi-Oh! Arc-V era. Source: isaiasgv/yugi-decks.",
+    "era": "ARC-V",
+    "format": "TCG",
+    "name": "Yugo — Speedroid",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/arcv/Yugo (Speedroid).ydk"
+  },
+  "yuma-numbers": {
+    "archetype": "Numbers",
+    "description": "Character deck from the Yu-Gi-Oh! Zexal era. Source: isaiasgv/yugi-decks.",
+    "era": "ZEXAL",
+    "format": "TCG",
+    "name": "Yuma — Numbers",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/zexal/Yuma (Numbers).ydk"
+  },
+  "yuma-zexal-ii": {
+    "archetype": "ZEXAL II",
+    "description": "Character deck from the Yu-Gi-Oh! Zexal era. Source: isaiasgv/yugi-decks.",
+    "era": "ZEXAL",
+    "format": "TCG",
+    "name": "Yuma — ZEXAL II",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/zexal/Yuma (ZEXAL II).ydk"
+  },
+  "yuri-predaplant": {
+    "archetype": "Predaplant",
+    "description": "Character deck from the Yu-Gi-Oh! Arc-V era. Source: isaiasgv/yugi-decks.",
+    "era": "ARC-V",
+    "format": "TCG",
+    "name": "Yuri — Predaplant",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/arcv/Yuri (Predaplant).ydk"
+  },
+  "yusaku-code-talker": {
+    "archetype": "Code Talker",
+    "description": "Character deck from the Yu-Gi-Oh! VRAINS era. Source: isaiasgv/yugi-decks.",
+    "era": "VRAINS",
+    "format": "TCG",
+    "name": "Yusaku — Code Talker",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/vrains/Yusaku (Code Talker).ydk"
+  },
+  "yusaku-cyberse": {
+    "archetype": "Cyberse",
+    "description": "Character deck from the Yu-Gi-Oh! VRAINS era. Source: isaiasgv/yugi-decks.",
+    "era": "VRAINS",
+    "format": "TCG",
+    "name": "Yusaku — Cyberse",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/vrains/Yusaku (Cyberse).ydk"
+  },
+  "yusei-quasar": {
+    "archetype": "Quasar",
+    "description": "Character deck from the Yu-Gi-Oh! 5D's era. Source: isaiasgv/yugi-decks.",
+    "era": "5D'S",
+    "format": "TCG",
+    "name": "Yusei — Quasar",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/5ds/Yusei (Quasar).ydk"
+  },
+  "yusei-synchron": {
+    "archetype": "Synchron",
+    "description": "Character deck from the Yu-Gi-Oh! 5D's era. Source: isaiasgv/yugi-decks.",
+    "era": "5D'S",
+    "format": "TCG",
+    "name": "Yusei — Synchron",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/5ds/Yusei (Synchron).ydk"
+  },
+  "yuto-phantom-knights": {
+    "archetype": "Phantom Knights",
+    "description": "Character deck from the Yu-Gi-Oh! Arc-V era. Source: isaiasgv/yugi-decks.",
+    "era": "ARC-V",
+    "format": "TCG",
+    "name": "Yuto — Phantom Knights",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/arcv/Yuto (Phantom Knights).ydk"
+  },
+  "yuya-magicians": {
+    "archetype": "Magicians",
+    "description": "Character deck from the Yu-Gi-Oh! Arc-V era. Source: isaiasgv/yugi-decks.",
+    "era": "ARC-V",
+    "format": "TCG",
+    "name": "Yuya — Magicians",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/arcv/Yuya (Magicians).ydk"
+  },
+  "yuya-performapal": {
+    "archetype": "Performapal",
+    "description": "Character deck from the Yu-Gi-Oh! Arc-V era. Source: isaiasgv/yugi-decks.",
+    "era": "ARC-V",
+    "format": "TCG",
+    "name": "Yuya — Performapal",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/arcv/Yuya (Performapal).ydk"
+  },
+  "z-arc-supreme-king": {
+    "archetype": "Supreme King",
+    "description": "Character deck from the Yu-Gi-Oh! Arc-V era. Source: isaiasgv/yugi-decks.",
+    "era": "ARC-V",
+    "format": "TCG",
+    "name": "Z-ARC — Supreme King",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/arcv/Z-ARC (Supreme King).ydk"
+  },
+  "zane-cyber-dragon": {
+    "archetype": "Cyber Dragon",
+    "description": "Character deck from the Yu-Gi-Oh! GX era. Source: isaiasgv/yugi-decks.",
+    "era": "GX",
+    "format": "TCG",
+    "name": "Zane — Cyber Dragon",
+    "source": "isaiasgv/yugi-decks",
+    "source_path": "decks/gx/Zane (Cyber Dragon).ydk"
+  }
+}

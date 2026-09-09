@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Card Archive · Yu-Gi-Oh Deck Builder{% endblock %}
+{% block body_class %}archive-page{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero--archive">
+    <div>
+        <p class="kicker"><span></span>Ancient card index</p>
+        <h1>Arcane <em>Archive</em></h1>
+        <p>Search {{ total_cards|default:0 }} cards. Study every attribute, archetype, and effect before you enter the duel.</p>
+    </div>
+    <div class="hero-stat">
+        <strong>{{ total_cards }}</strong>
+        <span>Cards indexed</span>
+    </div>
+</section>
+
+<form class="filter-bar filter-bar--progressive" method="get" aria-label="Filter cards" data-card-filters>
+    <label class="search-field filter-search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <span class="sr-only">Search cards</span>
+        <input class="transition-shadow focus-visible:ring-2 focus-visible:ring-arcane-gold/40 focus-visible:ring-offset-2 focus-visible:ring-offset-arcane-ink" type="search" name="q" value="{{ query }}" placeholder="Search by card, archetype, or effect…">
+    </label>
+    <label class="filter-control filter-control--primary">
+        <span class="filter-control__label">Card Type</span>
+        <select class="transition-shadow focus-visible:ring-2 focus-visible:ring-arcane-gold/40 focus-visible:ring-offset-2 focus-visible:ring-offset-arcane-ink" name="type" data-card-type aria-label="Card Type">
+            <option value="">All card types</option>
+            <option value="monster" {% if selected_type == "monster" %}selected{% endif %}>Monster</option>
+            <option value="spell" {% if selected_type == "spell" %}selected{% endif %}>Spell</option>
+            <option value="trap" {% if selected_type == "trap" %}selected{% endif %}>Trap</option>
+        </select>
+    </label>
+    <label class="filter-control" data-filter-for="monster" {% if selected_type != "monster" %}hidden{% endif %}>
+        <span class="filter-control__label">Attribute</span>
+        <select class="transition-shadow focus-visible:ring-2 focus-visible:ring-arcane-gold/40 focus-visible:ring-offset-2 focus-visible:ring-offset-arcane-ink" name="attribute" aria-label="Monster Attribute" {% if selected_type != "monster" %}disabled{% endif %}>
+            <option value="">All attributes</option>
+            {% for attribute in attributes %}
+                <option value="{{ attribute }}" {% if attribute == selected_attribute %}selected{% endif %}>{{ attribute }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label class="filter-control" data-filter-for="monster" {% if selected_type != "monster" %}hidden{% endif %}>
+        <span class="filter-control__label">Monster Type</span>
+        <select class="transition-shadow focus-visible:ring-2 focus-visible:ring-arcane-gold/40 focus-visible:ring-offset-2 focus-visible:ring-offset-arcane-ink" name="race" aria-label="Monster Type" {% if selected_type != "monster" %}disabled{% endif %}>
+            <option value="">All Monster Types</option>
+            {% for monster_type in monster_types %}
+                <option value="{{ monster_type }}" {% if monster_type == selected_race %}selected{% endif %}>{{ monster_type }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label class="filter-control" data-filter-for="monster" {% if selected_type != "monster" %}hidden{% endif %}>
+        <span class="filter-control__label">Monster Frame</span>
+        <select class="transition-shadow focus-visible:ring-2 focus-visible:ring-arcane-gold/40 focus-visible:ring-offset-2 focus-visible:ring-offset-arcane-ink" name="frame" aria-label="Monster Frame" {% if selected_type != "monster" %}disabled{% endif %}>
+            <option value="">All Monster Frames</option>
+            {% for value, label in monster_frames %}
+                <option value="{{ value }}" {% if value == selected_frame %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label class="filter-control" data-filter-for="spell" {% if selected_type != "spell" %}hidden{% endif %}>
+        <span class="filter-control__label">Spell Type</span>
+        <select class="transition-shadow focus-visible:ring-2 focus-visible:ring-arcane-gold/40 focus-visible:ring-offset-2 focus-visible:ring-offset-arcane-ink" name="race" aria-label="Spell Type" {% if selected_type != "spell" %}disabled{% endif %}>
+            <option value="">All Spell Types</option>
+            {% for spell_type in spell_types %}
+                <option value="{{ spell_type }}" {% if spell_type == selected_race %}selected{% endif %}>{{ spell_type }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label class="filter-control" data-filter-for="trap" {% if selected_type != "trap" %}hidden{% endif %}>
+        <span class="filter-control__label">Trap Type</span>
+        <select class="transition-shadow focus-visible:ring-2 focus-visible:ring-arcane-gold/40 focus-visible:ring-offset-2 focus-visible:ring-offset-arcane-ink" name="race" aria-label="Trap Type" {% if selected_type != "trap" %}disabled{% endif %}>
+            <option value="">All Trap Types</option>
+            {% for trap_type in trap_types %}
+                <option value="{{ trap_type }}" {% if trap_type == selected_race %}selected{% endif %}>{{ trap_type }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <button class="button button--gold" type="submit">Search archive</button>
+</form>
+
+<div class="result-line">
+    <span>{{ page_obj.paginator.count }} result{{ page_obj.paginator.count|pluralize }}</span>
+    {% if has_active_filters %}<a href="{% url 'cards_page:list' %}">Clear filters</a>{% endif %}
+</div>
+
+<section class="card-grid" aria-label="Card results">
+    {% for card in page_obj %}
+        <article class="archive-card">
+            <a class="archive-card__image" href="{% url 'cards_page:detail' card.card_id %}?return={{ archive_return_url|urlencode }}" aria-label="ดูรายละเอียดและเอฟเฟกต์ของ {{ card.name }}">
+                <img src="{{ card.local_image_url }}" alt="{{ card.name }}" loading="lazy">
+                <span class="archive-card__shine" aria-hidden="true"></span>
+            </a>
+            <div class="archive-card__body">
+                <div class="archive-card__meta">
+                    <span>{{ card.attribute|default:card.frame_type|default:"Card" }}</span>
+                    {% if card.level %}<span>Lv. {{ card.level }}</span>{% endif %}
+                </div>
+                <h2><a href="{% url 'cards_page:detail' card.card_id %}?return={{ archive_return_url|urlencode }}">{{ card.name }}</a></h2>
+                <p>{{ card.card_type }}</p>
+                {% if card.atk != None %}<div class="archive-card__stats"><span>ATK {{ card.atk }}</span><span>DEF {{ card.defense|default_if_none:"—" }}</span></div>{% endif %}
+            </div>
+        </article>
+    {% empty %}
+        <div class="empty-state">
+            <span class="empty-state__sigil">◇</span>
+            <h2>No cards answered the call</h2>
+            <p>Try a broader name or remove one of the filters.</p>
+        </div>
+    {% endfor %}
+</section>
+
+{% if page_obj.paginator.num_pages > 1 %}
+<nav class="pagination" aria-label="Card result pages">
+    {% if page_obj.has_previous %}<a href="?{{ pagination_query }}page={{ page_obj.previous_page_number }}">← Previous</a>{% endif %}
+    <span>Page {{ page_obj.number }} <small>of {{ page_obj.paginator.num_pages }}</small></span>
+    {% if page_obj.has_next %}<a href="?{{ pagination_query }}page={{ page_obj.next_page_number }}">Next →</a>{% endif %}
+</nav>
+{% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'js/card-filters.js' %}?v=20260831-1"></script>
+{% endblock %}

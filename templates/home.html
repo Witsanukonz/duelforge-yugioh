@@ -1,0 +1,106 @@
+{% load static tailwind_tags %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0D0906">
+    <meta name="description" content="Build legendary Yu-Gi-Oh decks and explore iconic monsters.">
+    <title>Yu-Gi-Oh Deck Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {% tailwind_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}?v=20260831-5">
+</head>
+<body class="min-h-screen overflow-x-hidden bg-arcane-ink text-arcane-ivory antialiased">
+    <main
+        class="temple-hero relative min-h-screen overflow-hidden"
+        style="--temple-background: url('{% static 'images/backgrounds/ancient-egypt-temple.png' %}');"
+        data-carousel
+    >
+        <div class="temple-hero__backdrop" aria-hidden="true"></div>
+        <div class="temple-hero__hieroglyphs" aria-hidden="true"></div>
+        <div class="temple-hero__floor-glow" aria-hidden="true"></div>
+        <div class="temple-hero__vignette" aria-hidden="true"></div>
+        <div class="dust-field" data-dust-field aria-hidden="true"></div>
+
+        <header class="hero-header relative z-50 items-center">
+            <a class="brand inline-flex items-center" href="{% url 'home' %}" aria-label="Yu-Gi-Oh Deck Builder home">
+                <span class="brand__mark" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" role="img">
+                        <path d="M4 24C9 14.5 15.8 10 24 10s15 4.5 20 14c-5 9.5-11.8 14-20 14S9 33.5 4 24Z"/>
+                        <path d="M13 24c3.2-5 6.8-7.5 11-7.5S31.8 19 35 24c-3.2 5-6.8 7.5-11 7.5S16.2 29 13 24Z"/>
+                        <circle cx="24" cy="24" r="4.5"/>
+                        <path d="M24 3v7M8.5 8.5l5 5M39.5 8.5l-5 5"/>
+                    </svg>
+                </span>
+                <span>Yu-Gi-Oh Deck Builder</span>
+            </a>
+
+            <nav class="desktop-nav items-center" aria-label="Primary navigation">
+                <a href="{% url 'cards_page:list' %}">Cards</a>
+                <a href="{% url 'decks_page:list' %}">Decks</a>
+                <a href="{% url 'collects_page:list' %}">Collection</a>
+                <a href="{% url 'banlists_page:list' %}">Ban List</a>
+                {% if request.user.is_authenticated %}
+                    <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="desktop-nav__login" type="submit">Logout</button></form>
+                {% else %}
+                    <a class="desktop-nav__login" href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </nav>
+
+            <button class="mobile-menu" type="button" data-home-nav-toggle aria-label="Open navigation" aria-expanded="false">
+                <span></span><span></span>
+            </button>
+        </header>
+
+        <div class="corner-ornament corner-ornament--left" aria-hidden="true"></div>
+        <div class="corner-ornament corner-ornament--right" aria-hidden="true"></div>
+
+        <div class="hero-typography" aria-hidden="true">
+            <span>Shadow</span>
+            <span>Game</span>
+        </div>
+
+        <section class="monster-stage" data-monster-stage aria-label="Featured monster carousel" aria-live="polite"></section>
+
+        <section class="monster-info" aria-labelledby="featured-monster-name">
+            <div class="eyebrow"><span></span>Featured Monster</div>
+            <p class="monster-info__era" data-monster-era>{{ featured_monsters.0.era }}</p>
+            <h1 id="featured-monster-name" data-monster-name>{{ featured_monsters.0.name }}</h1>
+            <p class="monster-info__type" data-monster-type>{{ featured_monsters.0.subtitle }}</p>
+            <p class="monster-info__copy">Build legendary decks, explore thousands of cards,<br>and validate your strategy for TCG or OCG play.</p>
+
+            <div class="carousel-controls">
+                <button type="button" class="carousel-button" data-carousel-prev aria-label="Previous monster">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <button type="button" class="carousel-button" data-carousel-next aria-label="Next monster">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+                <div class="carousel-progress">
+                    <span class="carousel-counter" data-counter>01 / {{ featured_monsters|length|stringformat:"02d" }}</span>
+                    <div class="carousel-indicators" data-era-indicators aria-label="Choose featured era"></div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="hero-actions">
+            <a class="hero-actions__secondary" data-explore-link href="{{ featured_monsters.0.exploreUrl }}">{{ featured_monsters.0.exploreLabel }}</a>
+            <a class="hero-actions__primary" href="{% if request.user.is_authenticated %}{% url 'decks_page:create' %}{% else %}{% url 'login' %}?next={% url 'decks_page:create' %}{% endif %}">
+                <span>Build Your Deck</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+        </aside>
+
+        <div class="hero-scroll-cue" aria-hidden="true"><span></span>Awaken the legend</div>
+    </main>
+
+    {% include 'includes/music_player.html' %}
+
+    {{ featured_monsters|json_script:"featured-monsters-data" }}
+    <script src="{% static 'js/hero-carousel.js' %}?v=20260829-1"></script>
+    <script src="{% static 'js/app.js' %}?v=20260831-7"></script>
+</body>
+</html>

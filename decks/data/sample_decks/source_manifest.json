@@ -1,0 +1,253 @@
+{
+  "files": {
+    "decks/5ds/Akiza (Black Rose).ydk": {
+      "era": "5D'S",
+      "local_path": "isaiasgv-yugi-decks/5ds/akiza-black-rose.ydk",
+      "sha256": "541ffd14a6dc6c0724dae78f941711819e19fc8080becea424b629b7a538451c"
+    },
+    "decks/5ds/Aporia (Meklord).ydk": {
+      "era": "5D'S",
+      "local_path": "isaiasgv-yugi-decks/5ds/aporia-meklord.ydk",
+      "sha256": "adefea82d45af2debe698e0a35a02fd1df7e0a220e4b9074c78a0a2c39964218"
+    },
+    "decks/5ds/Crow (Blackwing).ydk": {
+      "era": "5D'S",
+      "local_path": "isaiasgv-yugi-decks/5ds/crow-blackwing.ydk",
+      "sha256": "c54fcc0c4c2f5347767bd77d3306e3713c97a5c80f9f30c08bcf31603dabb3ae"
+    },
+    "decks/5ds/Jack (Resonator).ydk": {
+      "era": "5D'S",
+      "local_path": "isaiasgv-yugi-decks/5ds/jack-resonator.ydk",
+      "sha256": "b89ff3743b46576fe91decd904f8723adaed0943731a39576fb311b3a45f496f"
+    },
+    "decks/5ds/Leo (Morphtronic).ydk": {
+      "era": "5D'S",
+      "local_path": "isaiasgv-yugi-decks/5ds/leo-morphtronic.ydk",
+      "sha256": "56df227dc3b51f9d52c4d0e7d09b6e7380626645735c3994909d85a1a9714306"
+    },
+    "decks/5ds/Luna (Ancient Fairy).ydk": {
+      "era": "5D'S",
+      "local_path": "isaiasgv-yugi-decks/5ds/luna-ancient-fairy.ydk",
+      "sha256": "26696a56dece76eba1c89c431a1ae489c78383aa0286522fc6f9ccec6112a31b"
+    },
+    "decks/5ds/Yusei (Quasar).ydk": {
+      "era": "5D'S",
+      "local_path": "isaiasgv-yugi-decks/5ds/yusei-quasar.ydk",
+      "sha256": "0a27781c40046a97b69955376787d572d6e3ad4335f1cbe8efb34abceb5c8e94"
+    },
+    "decks/5ds/Yusei (Synchron).ydk": {
+      "era": "5D'S",
+      "local_path": "isaiasgv-yugi-decks/5ds/yusei-synchron.ydk",
+      "sha256": "ee6fb1ecfa8b560f824922f72a979f1f335c582f8c411b5eb5c9d2729c0255f9"
+    },
+    "decks/arcv/Yugo (Speedroid).ydk": {
+      "era": "ARC-V",
+      "local_path": "isaiasgv-yugi-decks/arcv/yugo-speedroid.ydk",
+      "sha256": "3ee29fecc2e39217a04c7fd045983f4396f4c7fb5f727e0ab5dcc61f07ca05bc"
+    },
+    "decks/arcv/Yuri (Predaplant).ydk": {
+      "era": "ARC-V",
+      "local_path": "isaiasgv-yugi-decks/arcv/yuri-predaplant.ydk",
+      "sha256": "551da2a5e704bdb2e9263b1f3a2889e4a95bd6c1754ecb6a365e0d611e344014"
+    },
+    "decks/arcv/Yuto (Phantom Knights).ydk": {
+      "era": "ARC-V",
+      "local_path": "isaiasgv-yugi-decks/arcv/yuto-phantom-knights.ydk",
+      "sha256": "40d31dab3a4b478dfcbec5431ec1d3ce2155f587d5f3230c3841286b6c27bb4c"
+    },
+    "decks/arcv/Yuya (Magicians).ydk": {
+      "era": "ARC-V",
+      "local_path": "isaiasgv-yugi-decks/arcv/yuya-magicians.ydk",
+      "sha256": "e0c28ff41acffadd8879fa6651773af4c8f58ee71cad164e16825a4c9f48cdbe"
+    },
+    "decks/arcv/Yuya (Performapal).ydk": {
+      "era": "ARC-V",
+      "local_path": "isaiasgv-yugi-decks/arcv/yuya-performapal.ydk",
+      "sha256": "294c8f733af5b8b278c9f4716deb479922a70c35775f393b7f0d5dbe6e6500b2"
+    },
+    "decks/arcv/Z-ARC (Supreme King).ydk": {
+      "era": "ARC-V",
+      "local_path": "isaiasgv-yugi-decks/arcv/z-arc-supreme-king.ydk",
+      "sha256": "c845f972efa55b2c142a50473524c3e654cb2b980b4291a05382113491e4307c"
+    },
+    "decks/dm/Atem (DSOD).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/atem-dsod.ydk",
+      "sha256": "5c96c590aa99643830a44304b459fee43debc3560d6d707f1fd3169add810ba4"
+    },
+    "decks/dm/Atem (Memory World).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/atem-memory-world.ydk",
+      "sha256": "cba546edf17ff196049d5da520e9240b6bf2f871231e572914721b1957ff1c3f"
+    },
+    "decks/dm/Bakura (Occult).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/bakura-occult.ydk",
+      "sha256": "9e93dec107f7ec4c8f2a81d5e7d9b8be7c5afd24794dc459be5a5780acca93ed"
+    },
+    "decks/dm/Ishizu (Spirits).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/ishizu-spirits.ydk",
+      "sha256": "e5c39342c1ab6d356bc064d8109de38c49901a05aee77817cb8cbbe4932abdb2"
+    },
+    "decks/dm/Joey (Battle City).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/joey-battle-city.ydk",
+      "sha256": "add4f148188508031cb774135f8371f426958c9c44fac08bbadbfd52e1404000"
+    },
+    "decks/dm/Joey (Doma Hermos).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/joey-doma-hermos.ydk",
+      "sha256": "82b245afacd51eccef0cb0a2e44dad255969557c5959b620f66aaa49f9b346cf"
+    },
+    "decks/dm/Joey (Duelist Kingdom).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/joey-duelist-kingdom.ydk",
+      "sha256": "57f2a3635b7aab243bb2699227b873a6f1118a8ba8e0fe289b95ee92b8b53a8d"
+    },
+    "decks/dm/Kaiba (Battle City).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/kaiba-battle-city.ydk",
+      "sha256": "30eb8df4edf8a18121e4537e0835f33235977ffb32fc085d0475cd857a25c39c"
+    },
+    "decks/dm/Kaiba (DSOD Modern).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/kaiba-dsod-modern.ydk",
+      "sha256": "4945d9ffcd18a9ae00f70711726c04910300b7a47e5563123c07ee698498ea0f"
+    },
+    "decks/dm/Kaiba (Doma).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/kaiba-doma.ydk",
+      "sha256": "8c2a8ae82286870210a82f73244e68c87a268e5498ec20df2fe8b24e6ff2771e"
+    },
+    "decks/dm/Kaiba (Duelist Kingdom).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/kaiba-duelist-kingdom.ydk",
+      "sha256": "1566ef3b7f43212b3e6435f13aa10d3e8befec4376a28523a7d5074f2dcc9f8e"
+    },
+    "decks/dm/Mai (Harpies).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/mai-harpies.ydk",
+      "sha256": "16721b0925a7e2b423041a8c3eadb3e782ea8fd1b6b962f7e4a4646361ee428f"
+    },
+    "decks/dm/Marik (Battle City).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/marik-battle-city.ydk",
+      "sha256": "7e9803ec0fb621907fde20aec96239d576a5de7aef5a28a135b37b61427ae580"
+    },
+    "decks/dm/Pegasus (Toons).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/pegasus-toons.ydk",
+      "sha256": "23fb0cb6f6e4c7a00cf55277681da02b371a1886483dd02e765d0464b13df88e"
+    },
+    "decks/dm/Yugi (Battle City).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/yugi-battle-city.ydk",
+      "sha256": "19b811ad4255c4872ab0e964649d8359520fe424a5b39e76be687f590144bf6b"
+    },
+    "decks/dm/Yugi (Doma).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/yugi-doma.ydk",
+      "sha256": "6f3ae40331917c00796a2e75ae0fbb649dfcb16766da9cce0bf716811c245d21"
+    },
+    "decks/dm/Yugi (Duelist Kingdom).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/yugi-duelist-kingdom.ydk",
+      "sha256": "fa4ef08cf4c54783d2b60645cd2b9c6ab272dfdebf21cad3ceaae7bb63a8a603"
+    },
+    "decks/dm/Yugi (Final Duel).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/yugi-final-duel.ydk",
+      "sha256": "fba0f0eb20acce020e7c885e82a7bfe7dcd33244e2da3d326ada5d4377b27dd5"
+    },
+    "decks/dm/Yugi (Manga Final).ydk": {
+      "era": "DM",
+      "local_path": "isaiasgv-yugi-decks/dm/yugi-manga-final.ydk",
+      "sha256": "89480dd4a5acfd3cc6c9b93d194843333fcc80db7ea79835773e2f80c9427f44"
+    },
+    "decks/gx/Aster (Destiny HERO).ydk": {
+      "era": "GX",
+      "local_path": "isaiasgv-yugi-decks/gx/aster-destiny-hero.ydk",
+      "sha256": "a7f2363c7a80566066e502431415b66e9f3a4bb6aac7e8f689b0bf1e0bc2cd7b"
+    },
+    "decks/gx/Atticus (Red-Eyes Darkness).ydk": {
+      "era": "GX",
+      "local_path": "isaiasgv-yugi-decks/gx/atticus-red-eyes-darkness.ydk",
+      "sha256": "718a7df28dda181b9670dba47cfe13e725b99faf14cbbee537140056fcb3c4cc"
+    },
+    "decks/gx/Bastion (Element).ydk": {
+      "era": "GX",
+      "local_path": "isaiasgv-yugi-decks/gx/bastion-element.ydk",
+      "sha256": "28bf9820a7346abd4c0230c0a0223d7f9e9fece60a946938a97b2754c12ec1e5"
+    },
+    "decks/gx/Chazz (Ojama VWXYZ).ydk": {
+      "era": "GX",
+      "local_path": "isaiasgv-yugi-decks/gx/chazz-ojama-vwxyz.ydk",
+      "sha256": "78898c337e991167c106465a3a9fab67794a16f34ffb6adf0724896b81fd7eaf"
+    },
+    "decks/gx/Dark Jaden (Evil HERO).ydk": {
+      "era": "GX",
+      "local_path": "isaiasgv-yugi-decks/gx/dark-jaden-evil-hero.ydk",
+      "sha256": "ca487c38b9b782d7a44b0d96ffb0de1cb73bbcb87a816de4572149189a3796ed"
+    },
+    "decks/gx/Jaden (HEROes).ydk": {
+      "era": "GX",
+      "local_path": "isaiasgv-yugi-decks/gx/jaden-heroes.ydk",
+      "sha256": "4240ccf616bcb5a110e4d3923e9f3fa186961ed73121d043f400f50d2c971e2a"
+    },
+    "decks/gx/Jaden (Neos).ydk": {
+      "era": "GX",
+      "local_path": "isaiasgv-yugi-decks/gx/jaden-neos.ydk",
+      "sha256": "d5f445ff6f4561dc5f4fc8c5b9660313cb07d86639afa2dfd1ec3ad94e4bdd6e"
+    },
+    "decks/gx/Yubel.ydk": {
+      "era": "GX",
+      "local_path": "isaiasgv-yugi-decks/gx/yubel.ydk",
+      "sha256": "60720371b384e245d080b550a45de6c213b78d039e67e531c19571637eac66a1"
+    },
+    "decks/gx/Zane (Cyber Dragon).ydk": {
+      "era": "GX",
+      "local_path": "isaiasgv-yugi-decks/gx/zane-cyber-dragon.ydk",
+      "sha256": "c7dfaeca95db026815c779035fe8cdf90f62a10b694d2eca4ee2cc96280d0343"
+    },
+    "decks/vrains/Aoi (Trickstar).ydk": {
+      "era": "VRAINS",
+      "local_path": "isaiasgv-yugi-decks/vrains/aoi-trickstar.ydk",
+      "sha256": "d6a0833a1331d62e945bdf11dc0475a38e7c7722a503d2f03c84c6a5acc7159e"
+    },
+    "decks/vrains/Revolver (Rokket).ydk": {
+      "era": "VRAINS",
+      "local_path": "isaiasgv-yugi-decks/vrains/revolver-rokket.ydk",
+      "sha256": "732e14e3750b19e4c1c56c390be7fd310b421e8f1df64f841f3508eea58e5bc8"
+    },
+    "decks/vrains/Yusaku (Code Talker).ydk": {
+      "era": "VRAINS",
+      "local_path": "isaiasgv-yugi-decks/vrains/yusaku-code-talker.ydk",
+      "sha256": "01c2f4c608263360b034d3cc576ad7cb96b8301a5754e622a6073e28465358ed"
+    },
+    "decks/vrains/Yusaku (Cyberse).ydk": {
+      "era": "VRAINS",
+      "local_path": "isaiasgv-yugi-decks/vrains/yusaku-cyberse.ydk",
+      "sha256": "48101ccb645f4371a554724f41433ec2b0cbd5c6216650ba787a77da287ab94e"
+    },
+    "decks/zexal/Kaito (Galaxy-Eyes).ydk": {
+      "era": "ZEXAL",
+      "local_path": "isaiasgv-yugi-decks/zexal/kaito-galaxy-eyes.ydk",
+      "sha256": "5e9a7ee677feea1b4745c6106d7e6960a23bae49bd4b022365de1a32b772204c"
+    },
+    "decks/zexal/Yuma (Numbers).ydk": {
+      "era": "ZEXAL",
+      "local_path": "isaiasgv-yugi-decks/zexal/yuma-numbers.ydk",
+      "sha256": "f997ed86047f60c3636a98de27302b02883751353d3309c2e8f510733b7f4c98"
+    },
+    "decks/zexal/Yuma (ZEXAL II).ydk": {
+      "era": "ZEXAL",
+      "local_path": "isaiasgv-yugi-decks/zexal/yuma-zexal-ii.ydk",
+      "sha256": "0a4a8a8774550f2dcd57eac5673f6df4bf48bed0c08babf73451c6284108d8be"
+    }
+  },
+  "license_status": "No standalone license or GitHub-detected SPDX license was present when the downloader was implemented. The upstream README states that card data is copyright Konami and the repository contains deck-list passcode references.",
+  "source_archive": "https://codeload.github.com/isaiasgv/yugi-decks/zip/refs/heads/main",
+  "source_branch": "main",
+  "source_repository": "https://github.com/isaiasgv/yugi-decks"
+}

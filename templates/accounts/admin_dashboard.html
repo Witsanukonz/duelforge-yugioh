@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Admin Dashboard · Yu-Gi-Oh Deck Builder{% endblock %}
+{% block body_class %}admin-dashboard-page{% endblock %}
+{% block extra_head %}<link rel="stylesheet" href="{% static 'css/admin-dashboard.css' %}?v=20260828-1">{% endblock %}
+
+{% block content %}
+<header class="admin-hero">
+    <div>
+        <p class="kicker"><span></span>Staff access · Command center</p>
+        <h1>ADMIN <em>DASHBOARD</em></h1>
+        <p>ภาพรวมผู้เล่น คลังการ์ด เด็ค และสถานะ Ban List ของระบบ</p>
+    </div>
+    <div class="admin-hero__identity">
+        <span>Signed in as</span>
+        <strong>{{ request.user.username }}</strong>
+        <small>STAFF AUTHORIZED</small>
+    </div>
+</header>
+
+<section class="admin-stat-grid" aria-label="System summary">
+    <article><span>01</span><small>Duelists</small><strong>{{ stats.users }}</strong><p>สมัครใหม่ 30 วัน: {{ stats.new_users }}</p></article>
+    <article><span>02</span><small>Card archive</small><strong>{{ stats.cards }}</strong><p>การ์ดในฐานข้อมูล</p></article>
+    <article><span>03</span><small>Decks</small><strong>{{ stats.decks }}</strong><p>สาธารณะ {{ stats.public_decks }} เด็ค</p></article>
+    <article><span>04</span><small>Collection</small><strong>{{ stats.collection_copies }}</strong><p>{{ unique_collection_cards }} รายการสะสม</p></article>
+</section>
+
+<div class="admin-dashboard-grid">
+    <section class="admin-panel admin-panel--banlists">
+        <header><div><small>Tournament rules</small><h2>Active Ban Lists</h2></div><a href="{% url 'admin:banlists_banlist_changelist' %}">จัดการ</a></header>
+        <div class="admin-banlist-grid">
+            {% for banlist in active_banlists %}
+            <article>
+                <span>{{ banlist.format }}</span>
+                <div><strong>{{ banlist.name }}</strong><small>มีผล {{ banlist.effective_date|date:"j M Y" }} · {{ banlist.entry_count }} restrictions</small></div>
+                <i aria-label="Active"></i>
+            </article>
+            {% empty %}
+            <p class="admin-empty">ยังไม่มี Active Ban List — กรุณานำเข้าข้อมูลก่อนตรวจเด็ค</p>
+            {% endfor %}
+        </div>
+        <p class="admin-panel__note">เด็คที่เลือก N/A: <strong>{{ decks_without_banlist }}</strong></p>
+    </section>
+
+    <section class="admin-panel admin-panel--actions">
+        <header><div><small>Administration</small><h2>Quick Actions</h2></div></header>
+        <nav aria-label="Admin management links">
+            <a href="{% url 'admin:auth_user_changelist' %}"><span>01</span><strong>Users</strong><small>บัญชีและสิทธิ์</small></a>
+            <a href="{% url 'admin:cards_card_changelist' %}"><span>02</span><strong>Cards</strong><small>ฐานข้อมูลการ์ด</small></a>
+            <a href="{% url 'admin:decks_deck_changelist' %}"><span>03</span><strong>Decks</strong><small>เด็คของผู้เล่น</small></a>
+            <a href="{% url 'admin:collects_collection_changelist' %}"><span>04</span><strong>Collections</strong><small>คลังสะสม</small></a>
+        </nav>
+    </section>
+
+    <section class="admin-panel admin-panel--decks">
+        <header><div><small>Latest activity</small><h2>Recent Decks</h2></div><a href="{% url 'admin:decks_deck_changelist' %}">ดูทั้งหมด</a></header>
+        <div class="admin-table-wrap">
+            <table>
+                <thead><tr><th>Deck</th><th>Owner</th><th>Format</th><th>Ban List</th><th>Visibility</th></tr></thead>
+                <tbody>
+                {% for deck in recent_decks %}
+                <tr>
+                    <td><a href="{% url 'decks_page:builder' deck.pk %}">{{ deck.name }}</a></td>
+                    <td>{{ deck.owner.username }}</td>
+                    <td><span class="admin-chip">{{ deck.format }}</span></td>
+                    <td>{% if deck.ban_list %}{{ deck.ban_list.name }}{% else %}N/A{% endif %}</td>
+                    <td>{% if deck.is_public %}Public{% else %}Private{% endif %}</td>
+                </tr>
+                {% empty %}<tr><td colspan="5" class="admin-empty">ยังไม่มีเด็คในระบบ</td></tr>{% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="admin-panel admin-panel--users">
+        <header><div><small>New arrivals</small><h2>Recent Duelists</h2></div><a href="{% url 'admin:auth_user_changelist' %}">จัดการ</a></header>
+        <ul>
+            {% for user in recent_users %}
+            <li><span>{{ user.username|slice:":1"|upper }}</span><div><strong>{{ user.username }}</strong><small>เข้าร่วม {{ user.date_joined|date:"j M Y" }}</small></div>{% if user.is_staff %}<i>STAFF</i>{% endif %}</li>
+            {% empty %}<li class="admin-empty">ยังไม่มีผู้ใช้</li>{% endfor %}
+        </ul>
+    </section>
+</div>
+{% endblock %}

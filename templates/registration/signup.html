@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Join the Duel · Yu-Gi-Oh Deck Builder{% endblock %}
+{% block body_class %}auth-page{% endblock %}
+
+{% block content %}
+<section class="auth-layout">
+    <div class="auth-story auth-story--login">
+        <div class="auth-story__copy">
+            <p class="kicker"><span></span>Begin your legacy</p>
+            <h1>Answer the <em>Call</em></h1>
+            <p>Create your duelist identity and begin forging decks from more than fourteen thousand cards.</p>
+        </div>
+        <div class="login-monster" data-auth-monster aria-hidden="true">
+            <span class="login-monster__aura"></span>
+            <span class="login-monster__rune"></span>
+            <img src="{% static 'monsters/dark-magician-girl.png' %}" alt="" decoding="async">
+        </div>
+    </div>
+    <div class="auth-card">
+        <div><small>New duelist</small><h2>Create account</h2></div>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <label class="field-label">{{ field.label }}{{ field }}{% if field.help_text %}<small>{{ field.help_text|safe }}</small>{% endif %}{% for error in field.errors %}<b class="form-error">{{ error }}</b>{% endfor %}</label>
+            {% endfor %}
+            <button class="button button--gold button--full" type="submit">Create duelist</button>
+        </form>
+        <p class="auth-card__alternate">Already registered? <a href="{% url 'login' %}">Sign in</a></p>
+    </div>
+</section>
+{% endblock %}

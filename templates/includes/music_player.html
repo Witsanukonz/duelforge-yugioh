@@ -1,0 +1,54 @@
+{% load static %}
+<aside
+    class="music-player is-unavailable"
+    data-music-player
+    aria-label="เครื่องเล่นเพลงประกอบ"
+>
+    <script type="application/json" data-music-playlist>
+        [
+            {"title": "God's Anger", "src": "{% url 'site_audio' filename='gods-anger.mp3' %}"},
+            {"title": "Track 02", "src": "{% url 'site_audio' filename='track-02.mp3' %}"},
+            {"title": "Track 03", "src": "{% url 'site_audio' filename='track-03.mp3' %}"},
+            {"title": "Track 04", "src": "{% url 'site_audio' filename='track-04.mp3' %}"},
+            {"title": "Track 05", "src": "{% url 'site_audio' filename='track-05.mp3' %}"}
+        ]
+    </script>
+
+    <button class="music-player__record" type="button" data-music-expand aria-label="กางเครื่องเล่นเพลง">
+        <span class="music-player__record-label">YG</span>
+    </button>
+
+    <div class="music-player__content">
+        <div class="music-player__heading">
+            <div>
+                <span class="music-player__eyebrow">Duel soundtrack</span>
+                <strong data-music-title>God's Anger</strong>
+                <span class="music-player__status" data-music-status aria-live="polite">กำลังตรวจสอบไฟล์เพลง…</span>
+            </div>
+            <div class="music-player__heading-actions">
+                <button class="music-player__power" type="button" data-music-power aria-pressed="true" aria-label="ปิดเพลง">⏻</button>
+                <button class="music-player__collapse" type="button" data-music-collapse aria-expanded="true" aria-label="ย่อเครื่องเล่นเพลง">−</button>
+            </div>
+        </div>
+
+        <div class="music-player__controls" data-music-controls>
+            <button class="music-player__skip" type="button" data-music-previous aria-label="เพลงก่อนหน้า" disabled>‹</button>
+            <button class="music-player__play" type="button" data-music-toggle aria-label="เล่นเพลง" disabled>
+                <span data-music-toggle-icon aria-hidden="true">▶</span>
+            </button>
+            <button class="music-player__skip" type="button" data-music-next aria-label="เพลงถัดไป" disabled>›</button>
+            <div class="music-player__timeline">
+                <input type="range" min="0" max="100" step="0.1" value="0" data-music-progress aria-label="ตำแหน่งเพลง" disabled>
+                <div class="music-player__time">
+                    <time data-music-current>0:00</time>
+                    <span><span data-music-position>0 / 0</span> · <time data-music-duration>0:00</time></span>
+                </div>
+            </div>
+            <button class="music-player__mute" type="button" data-music-mute aria-label="ปิดเสียง" disabled>♪</button>
+            <input class="music-player__volume" type="range" min="0" max="1" step="0.05" value="0.7" data-music-volume aria-label="ระดับเสียง" disabled>
+        </div>
+        <span class="music-player__missing" data-music-missing>เพิ่มไฟล์เพลงใน static/audio/ อย่างน้อย 1 เพลงเพื่อเปิดใช้งาน</span>
+    </div>
+
+    <audio data-music-audio preload="metadata"></audio>
+</aside>

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Deck Vault · Yu-Gi-Oh Deck Builder{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero--decks">
+    <div>
+        <p class="kicker"><span></span>Strategy vault</p>
+        <h1>Deck <em>Sanctum</em></h1>
+        <p>Build your own strategy or begin with a curated sample deck stored entirely in the local library.</p>
+    </div>
+    {% if request.user.is_authenticated %}
+        <a class="button button--gold button--large" href="{% url 'decks_page:create' %}">+ Forge a new deck</a>
+    {% else %}
+        <a class="button button--gold" href="{% url 'login' %}?next={% url 'decks_page:create' %}">Sign in to build</a>
+    {% endif %}
+</section>
+
+<div class="deck-toolbar">
+    <form class="search-field search-field--compact deck-search-form" method="get">
+        <input type="hidden" name="library" value="{{ library_tab }}">
+        <div class="deck-search-form__field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <input type="search" name="q" value="{{ query }}" placeholder="Search decks, archetypes, or descriptions…" aria-label="Search decks, archetypes, or descriptions…">
+        </div>
+        <button class="button button--ghost" type="submit">Search</button>
+    </form>
+    {% if request.user.is_authenticated %}<span>{{ owned_count }} deck{{ owned_count|pluralize }} in your vault</span>{% endif %}
+</div>
+
+{% if request.user.is_authenticated %}
+<section class="deck-library-section" aria-labelledby="my-decks-heading">
+    <header class="deck-library-heading">
+        <div><p class="kicker"><span></span>Private collection</p><h2 id="my-decks-heading">My Decks</h2></div>
+        <strong>{{ my_page.paginator.count }}</strong>
+    </header>
+    <div class="deck-grid">
+        {% for deck in my_decks %}{% include "decks/_deck_tile.html" with deck=deck %}
+        {% empty %}
+        <div class="empty-state empty-state--wide"><span class="empty-state__sigil">◇</span><h2>Your vault is empty</h2><p>Create a deck or copy one from the Featured Library below.</p><a class="button button--gold" href="{% url 'decks_page:create' %}">Create deck</a></div>
+        {% endfor %}
+    </div>
+    {% if my_page.paginator.num_pages > 1 %}
+    <nav class="pagination" aria-label="My Deck pages">
+        {% if my_page.has_previous %}<a href="?{{ my_pagination_query }}my_page={{ my_page.previous_page_number }}">← Previous</a>{% endif %}
+        <span>Page {{ my_page.number }} <small>of {{ my_page.paginator.num_pages }}</small></span>
+        {% if my_page.has_next %}<a href="?{{ my_pagination_query }}my_page={{ my_page.next_page_number }}">Next →</a>{% endif %}
+    </nav>
+    {% endif %}
+</section>
+{% endif %}
+
+<section class="deck-library-section deck-library-section--featured" aria-labelledby="featured-decks-heading">
+    <nav class="deck-library-tabs" aria-label="Featured deck categories">
+        <a class="deck-library-tab{% if library_tab == 'character' %} is-active{% endif %}" href="?q={{ query|urlencode }}&amp;library=character"{% if library_tab == 'character' %} aria-current="page"{% endif %}>
+            <span>Character Deck</span>
+            <strong>{{ featured_page.paginator.count }}</strong>
+        </a>
+        <a class="deck-library-tab{% if library_tab == 'player' %} is-active{% endif %}" href="?q={{ query|urlencode }}&amp;library=player"{% if library_tab == 'player' %} aria-current="page"{% endif %}>
+            <span>Player Deck</span>
+            <strong>{{ player_page.paginator.count }}</strong>
+        </a>
+    </nav>
+    <header class="deck-library-heading">
+        {% if library_tab == "character" %}
+        <div><p class="kicker"><span></span>Local sample library</p><h2 id="featured-decks-heading">Featured Decks</h2><p>Read-only character decks. Open one to inspect every card, then copy it into your own vault.</p></div>
+        {% else %}
+        <div><p class="kicker"><span></span>Duelist public library</p><h2 id="featured-decks-heading">Player Decks</h2><p>Public strategies created by duelists. Open a deck to inspect its complete card list.</p></div>
+        {% endif %}
+        <strong>{{ library_page.paginator.count }}</strong>
+    </header>
+    <div class="deck-grid">
+        {% for deck in library_page %}{% include "decks/_deck_tile.html" with deck=deck %}
+        {% empty %}
+        {% if library_tab == "character" %}
+        <div class="empty-state empty-state--wide"><span class="empty-state__sigil">◇</span><h2>Sample library ready for sources</h2><p>Place real .ydk files in decks/data/sample_decks and run import_sample_decks.</p></div>
+        {% else %}
+        <div class="empty-state empty-state--wide"><span class="empty-state__sigil">◇</span><h2>No public player decks yet</h2><p>Sign in, build a deck, and enable Public deck to share it with other duelists.</p></div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% if library_page.paginator.num_pages > 1 %}
+    <nav class="pagination" aria-label="Featured deck pages">
+        {% if library_page.has_previous %}<a href="?{{ library_pagination_query }}{{ library_page_parameter }}={{ library_page.previous_page_number }}">← Previous</a>{% endif %}
+        <span>Page {{ library_page.number }} <small>of {{ library_page.paginator.num_pages }}</small></span>
+        {% if library_page.has_next %}<a href="?{{ library_pagination_query }}{{ library_page_parameter }}={{ library_page.next_page_number }}">Next →</a>{% endif %}
+    </nav>
+    {% endif %}
+</section>
+{% endblock %}

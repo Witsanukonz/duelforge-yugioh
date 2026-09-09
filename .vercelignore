@@ -1,0 +1,16 @@
+venv/
+.codex/
+.agents/
+.git/
+.vercel/
+db.sqlite3
+media/cards/
+staticfiles/
+theme/static_src/node_modules/
+**/__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+DB.png
+*.log

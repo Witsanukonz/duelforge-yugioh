@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}My Collection · Yu-Gi-Oh Deck Builder{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero--collection">
+    <div>
+        <p class="kicker"><span></span>Private treasury</p>
+        <h1>My <em>Collection</em></h1>
+        <p>Record every card under your protection, from prized centerpieces to the final copy your strategy needs.</p>
+    </div>
+    <div class="collection-stats">
+        <div><strong>{{ unique_cards }}</strong><span>Unique cards</span></div>
+        <div><strong>{{ total_copies }}</strong><span>Total copies</span></div>
+    </div>
+</section>
+
+<div class="deck-toolbar">
+    <form class="search-field search-field--compact" method="get">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input class="transition-shadow focus-visible:ring-2 focus-visible:ring-arcane-gold/40 focus-visible:ring-offset-2 focus-visible:ring-offset-arcane-ink" type="search" name="q" value="{{ query }}" placeholder="Search your collection…">
+    </form>
+    <a href="{% url 'cards_page:list' %}">+ Add cards from archive</a>
+</div>
+
+<div class="result-line">
+    <span>{% if page_obj.paginator.count %}Showing {{ page_obj.start_index }}–{{ page_obj.end_index }} of {{ page_obj.paginator.count }} cards{% else %}Showing 0 cards{% endif %}</span>
+</div>
+
+<section class="collection-table" data-collection-list>
+    <div class="collection-table__header"><span>Card</span><span>Condition</span><span>Copies</span><span>Favorite</span><span></span></div>
+    {% for item in items %}
+    <article class="collection-row" data-item-id="{{ item.pk }}">
+        <a class="collection-row__card" href="{% url 'cards_page:detail' item.card.card_id %}">
+            <img src="{{ item.card.local_image_url }}" alt="" loading="lazy">
+            <div><strong>{{ item.card.name }}</strong><span>{{ item.card.card_type }}{% if item.card.archetype %} · {{ item.card.archetype }}{% endif %}</span></div>
+        </a>
+        <span class="condition-badge">{{ item.get_condition_display|default:"Unspecified" }}</span>
+        <label class="quantity-control"><span class="sr-only">Quantity</span><input class="transition-shadow focus-visible:ring-2 focus-visible:ring-arcane-gold/40 focus-visible:ring-offset-2 focus-visible:ring-offset-arcane-ink" type="number" min="1" value="{{ item.quantity }}" data-item-quantity></label>
+        <button class="favorite-button {% if item.is_favorite %}is-active{% endif %}" type="button" data-item-favorite aria-label="Toggle favorite">★</button>
+        <button class="row-menu-button" type="button" data-item-remove aria-label="Remove from collection">×</button>
+    </article>
+    {% empty %}
+    <div class="empty-state empty-state--wide">
+        <span class="empty-state__sigil">◇</span>
+        <h2>Your treasury is empty</h2>
+        <p>Open the card archive and begin recording your collection.</p>
+        <a class="button button--gold" href="{% url 'cards_page:list' %}">Explore cards</a>
+    </div>
+    {% endfor %}
+</section>
+{% if page_obj.paginator.num_pages > 1 %}
+<nav class="pagination" aria-label="Collection pages">
+    {% if page_obj.has_previous %}<a href="?{{ pagination_query }}page={{ page_obj.previous_page_number }}">← Previous</a>{% endif %}
+    <span>Page {{ page_obj.number }} <small>of {{ page_obj.paginator.num_pages }}</small></span>
+    {% if page_obj.has_next %}<a href="?{{ pagination_query }}page={{ page_obj.next_page_number }}">Next →</a>{% endif %}
+</nav>
+{% endif %}
+<p class="inline-feedback" data-collection-feedback aria-live="polite"></p>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+const collection = document.querySelector("[data-collection-list]");
+const collectionFeedback = document.querySelector("[data-collection-feedback]");
+collection?.addEventListener("change", async (event) => {
+    const row = event.target.closest("[data-item-id]");
+    if (!row || !event.target.matches("[data-item-quantity]")) return;
+    try {
+        await window.deckBuilder.json(`/api/collection/${row.dataset.itemId}/`, {method: "PATCH", body: JSON.stringify({quantity: Number(event.target.value)})});
+        collectionFeedback.textContent = "Quantity updated.";
+    } catch (error) { collectionFeedback.textContent = error.payload?.error || "Could not update quantity."; }
+});
+collection?.addEventListener("click", async (event) => {
+    const row = event.target.closest("[data-item-id]");
+    if (!row) return;
+    const favorite = event.target.closest("[data-item-favorite]");
+    const remove = event.target.closest("[data-item-remove]");
+    try {
+        if (favorite) {
+            const next = !favorite.classList.contains("is-active");
+            await window.deckBuilder.json(`/api/collection/${row.dataset.itemId}/`, {method: "PATCH", body: JSON.stringify({is_favorite: next})});
+            favorite.classList.toggle("is-active", next);
+        }
+        if (remove) {
+            await window.deckBuilder.json(`/api/collection/${row.dataset.itemId}/`, {method: "DELETE"});
+            row.remove();
+            collectionFeedback.textContent = "Card removed from collection.";
+        }
+    } catch (error) { collectionFeedback.textContent = error.payload?.error || "Could not update collection."; }
+});
+</script>
+{% endblock %}

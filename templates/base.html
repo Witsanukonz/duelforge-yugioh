@@ -1,0 +1,70 @@
+{% load static tailwind_tags %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0d0906">
+    <title>{% block title %}Yu-Gi-Oh Deck Builder{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {% tailwind_css %}
+    <link rel="stylesheet" href="{% static 'css/app.css' %}?v=20260831-9">
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="app-body {% block body_class %}{% endblock %} min-h-screen overflow-x-hidden bg-arcane-ink text-arcane-ivory antialiased">
+    <div class="app-atmosphere" aria-hidden="true">
+        <span class="app-atmosphere__orb app-atmosphere__orb--one"></span>
+        <span class="app-atmosphere__orb app-atmosphere__orb--two"></span>
+        <span class="app-atmosphere__grid"></span>
+    </div>
+
+    <header class="app-header relative z-50 items-center">
+        <a class="app-brand inline-flex items-center" href="{% url 'home' %}" aria-label="Yu-Gi-Oh Deck Builder home">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 24C9 14.5 15.8 10 24 10s15 4.5 20 14c-5 9.5-11.8 14-20 14S9 33.5 4 24Z"/><path d="M13 24c3.2-5 6.8-7.5 11-7.5S31.8 19 35 24c-3.2 5-6.8 7.5-11 7.5S16.2 29 13 24Z"/><circle cx="24" cy="24" r="4.5"/></svg>
+            <span>Yu-Gi-Oh <small>Deck Builder</small></span>
+        </a>
+
+        <button class="app-menu-button cursor-pointer" type="button" data-nav-toggle aria-expanded="false" aria-controls="app-nav">
+            <span></span><span></span><span></span>
+            <span class="sr-only">Toggle navigation</span>
+        </button>
+
+        <nav class="app-nav items-center" id="app-nav" data-nav aria-label="Primary navigation">
+            {% if request.user.is_staff %}<a href="{% url 'admin_dashboard' %}" {% if request.resolver_match.url_name == 'admin_dashboard' %}aria-current="page"{% endif %}>Dashboard</a>{% endif %}
+            <a href="{% url 'cards_page:list' %}" {% if request.resolver_match.namespace == 'cards_page' %}aria-current="page"{% endif %}>Cards</a>
+            <a href="{% url 'decks_page:list' %}" {% if request.resolver_match.namespace == 'decks_page' %}aria-current="page"{% endif %}>Decks</a>
+            <a href="{% url 'collects_page:list' %}" {% if request.resolver_match.namespace == 'collects_page' %}aria-current="page"{% endif %}>Collection</a>
+            <a href="{% url 'banlists_page:list' %}" {% if request.resolver_match.namespace == 'banlists_page' %}aria-current="page"{% endif %}>Ban List</a>
+        </nav>
+
+        <div class="app-account items-center">
+            {% if request.user.is_authenticated %}
+                <span class="app-account__name">{{ request.user.username }}</span>
+                <a class="text-button" href="{% url 'password_change' %}">Password</a>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="text-button">Logout</button>
+                </form>
+            {% else %}
+                <a class="app-account__login" href="{% url 'login' %}">Enter</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <main class="app-main relative z-10">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="app-footer relative z-10 flex">
+        <span>Yu-Gi-Oh Deck Builder</span>
+        <span>Built with Django + Tailwind CSS · Card data by YGOPRODeck</span>
+    </footer>
+
+    {% include 'includes/music_player.html' %}
+
+    <script src="{% static 'js/app.js' %}?v=20260831-7"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

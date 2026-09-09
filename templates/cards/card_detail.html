@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block title %}{{ card.name }} · Card Archive{% endblock %}
+{% block body_class %}card-detail-page{% endblock %}
+
+{% block content %}
+<a class="back-link" href="{{ archive_return_url }}">← {{ back_label }}</a>
+<section class="card-detail">
+    <div class="card-detail__visual" data-card-zoom data-card-name="{{ card.name }}" role="button" tabindex="0" aria-label="ขยายภาพ {{ card.name }}">
+        <div class="card-detail__halo" aria-hidden="true"></div>
+        <img src="{{ card.local_image_url }}" alt="{{ card.name }}">
+    </div>
+    <div class="card-detail__content">
+        <p class="kicker"><span></span>{{ card.attribute|default:card.frame_type|default:"Archive record" }}</p>
+        <h1>{{ card.name }}</h1>
+        <div class="card-detail__identity">
+            <span>{{ card.card_type }}</span>
+            {% if card.race %}<span>{{ card.race }}</span>{% endif %}
+            {% if card.archetype %}<span>{{ card.archetype }}</span>{% endif %}
+        </div>
+
+        {% if card.level %}
+        <div class="monster-level monster-level--{{ level_label|lower }}">
+            <div>
+                <span>{{ level_label }}</span>
+                <strong>{{ card.level }}</strong>
+            </div>
+            <div class="monster-level__stars" aria-label="{{ level_label }} {{ card.level }}">
+                {% for star in level_stars %}<i class="monster-level__star" aria-hidden="true">★</i>{% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if show_monster_stats %}
+        <div class="stat-row">
+            <div><span>พลังโจมตี <small>ATK</small></span><strong>{{ atk_display }}</strong></div>
+            <div><span>พลังป้องกัน <small>DEF</small></span><strong>{{ defense_display }}</strong></div>
+            <div><span>ธาตุ <small>Attribute</small></span><strong class="stat-row__text">{{ card.attribute|default:"—" }}</strong></div>
+        </div>
+        {% endif %}
+
+        <section class="effect-copy" data-translation-card data-card-id="{{ card.card_id }}">
+            <header class="effect-copy__header">
+                <div>
+                    <span>คำแปลเอฟเฟกต์ / คำบรรยาย</span>
+                    <strong>ข้อความการ์ด</strong>
+                </div>
+                <span class="translation-badge">แปลเมื่อกด</span>
+            </header>
+            <div class="effect-copy__tabs" role="tablist" aria-label="เลือกภาษาของข้อความการ์ด">
+                <button class="effect-tab is-active" id="effect-tab-en" type="button" role="tab" aria-selected="true" aria-controls="effect-panel-en" data-effect-tab="en">English</button>
+                <button class="effect-tab" id="effect-tab-th" type="button" role="tab" aria-selected="false" aria-controls="effect-panel-th" tabindex="-1" data-effect-tab="th">ภาษาไทย(DEMO)</button>
+            </div>
+            <div class="effect-panel effect-panel--english is-active" id="effect-panel-en" role="tabpanel" aria-labelledby="effect-tab-en" data-effect-panel="en" lang="en">
+                <p>{{ card.description|default:"No card text recorded." }}</p>
+            </div>
+            <div class="effect-panel effect-panel--thai" id="effect-panel-th" role="tabpanel" aria-labelledby="effect-tab-th" data-effect-panel="th" lang="th" hidden>
+                <p data-thai-effect>{% if card.description_th %}{{ card.description_th }}{% elif card.description %}กดแท็บภาษาไทยเพื่อแปลข้อความการ์ดใบนี้{% else %}การ์ดใบนี้ไม่มีข้อความเอฟเฟกต์{% endif %}</p>
+                {% if card.description and not card.description_th %}<span class="translation-loader" data-translation-loader aria-hidden="true"></span>{% endif %}
+            </div>
+        </section>
+        <div class="detail-actions">
+            {% if request.user.is_authenticated %}
+                <button class="button button--gold" type="button" data-add-collection data-card-id="{{ card.card_id }}">Add to collection</button>
+                <a class="button button--ghost" href="{% url 'decks_page:create' %}">Open deck builder</a>
+            {% else %}
+                <a class="button button--gold" href="{% url 'login' %}?next={{ request.path }}">Sign in to collect</a>
+            {% endif %}
+        </div>
+        <p class="inline-feedback" data-action-feedback aria-live="polite"></p>
+    </div>
+</section>
+
+{% if related_cards %}
+<section class="related-section">
+    <div class="section-heading"><div><p class="kicker"><span></span>Continue the search</p><h2>Related cards</h2></div></div>
+    <div class="mini-card-grid">
+        {% for related in related_cards %}
+        <a class="mini-card" href="{% url 'cards_page:detail' related.card_id %}?return={{ archive_return_url|urlencode }}">
+            <img src="{{ related.local_image_url }}" alt="" loading="lazy">
+            <span>{{ related.name }}</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+const translationCard = document.querySelector("[data-translation-card]");
+const thaiEffect = document.querySelector("[data-thai-effect]");
+const translationLoader = document.querySelector("[data-translation-loader]");
+const effectTabs = Array.from(document.querySelectorAll("[data-effect-tab]"));
+const effectPanels = Array.from(document.querySelectorAll("[data-effect-panel]"));
+let translationState = translationLoader ? "idle" : "ready";
+
+function selectEffectTab(tab, moveFocus = false) {
+    if (!tab) return;
+    effectTabs.forEach((item) => {
+        const isSelected = item === tab;
+        item.classList.toggle("is-active", isSelected);
+        item.setAttribute("aria-selected", String(isSelected));
+        item.tabIndex = isSelected ? 0 : -1;
+    });
+    effectPanels.forEach((panel) => {
+        const isSelected = panel.dataset.effectPanel === tab.dataset.effectTab;
+        panel.classList.toggle("is-active", isSelected);
+        panel.hidden = !isSelected;
+    });
+    if (tab.dataset.effectTab === "th") loadThaiTranslation();
+    if (moveFocus) tab.focus();
+}
+
+effectTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => selectEffectTab(tab));
+    tab.addEventListener("keydown", (event) => {
+        let targetIndex = null;
+        if (event.key === "ArrowRight") targetIndex = (index + 1) % effectTabs.length;
+        if (event.key === "ArrowLeft") targetIndex = (index - 1 + effectTabs.length) % effectTabs.length;
+        if (event.key === "Home") targetIndex = 0;
+        if (event.key === "End") targetIndex = effectTabs.length - 1;
+        if (targetIndex === null) return;
+        event.preventDefault();
+        selectEffectTab(effectTabs[targetIndex], true);
+    });
+});
+
+async function loadThaiTranslation() {
+    if (!translationCard || !thaiEffect || translationState !== "idle") return;
+    translationState = "loading";
+    thaiEffect.textContent = "กำลังแปลข้อความการ์ดเป็นภาษาไทย…";
+    try {
+        const payload = await window.deckBuilder.json(
+            `/api/cards/${translationCard.dataset.cardId}/translation/`,
+            {method: "POST", body: "{}"},
+        );
+        thaiEffect.textContent = payload.translation || "การ์ดใบนี้ไม่มีข้อความเอฟเฟกต์";
+        translationState = "ready";
+        translationLoader.remove();
+    } catch (error) {
+        translationState = "idle";
+        thaiEffect.textContent = "ยังแปลภาษาไทยไม่ได้ในขณะนี้ กรุณาลองใหม่อีกครั้ง";
+        translationLoader.remove();
+        const retry = document.createElement("button");
+        retry.type = "button";
+        retry.className = "translation-retry";
+        retry.textContent = "ลองแปลอีกครั้ง";
+        retry.addEventListener("click", () => {
+            retry.remove();
+            loadThaiTranslation();
+        }, {once: true});
+        thaiEffect.after(retry);
+    }
+}
+
+document.querySelector("[data-add-collection]")?.addEventListener("click", async (event) => {
+    const button = event.currentTarget;
+    const feedback = document.querySelector("[data-action-feedback]");
+    button.disabled = true;
+    try {
+        await window.deckBuilder.json("/api/collection/", {
+            method: "POST",
+            body: JSON.stringify({card_id: Number(button.dataset.cardId), quantity: 1, condition: "NM"}),
+        });
+        feedback.textContent = "Added to your collection.";
+        button.textContent = "Collected";
+    } catch (error) {
+        feedback.textContent = error.payload?.error || "Could not add this card.";
+        button.disabled = false;
+    }
+});
+</script>
+{% endblock %}

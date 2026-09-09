@@ -1,0 +1,8 @@
+{
+  "blue-eyes": {
+    "name": "Blue-Eyes",
+    "archetype": "Blue-Eyes",
+    "description": "A sample strategy built around Blue-Eyes monsters.",
+    "format": "TCG"
+  }
+}

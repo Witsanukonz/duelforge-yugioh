@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{% if deck %}{{ deck.name }}{% else %}Forge a Deck{% endif %} · Deck Builder{% endblock %}
+{% block body_class %}builder-page{% endblock %}
+{% block extra_head %}<link rel="stylesheet" href="{% static 'css/deck-builder.css' %}?v=20260901-3">{% endblock %}
+
+{% block content %}
+<header class="builder-heading">
+    <div>
+        <a class="back-link" href="{% url 'decks_page:list' %}">← Deck sanctum</a>
+        <p class="kicker"><span></span>{% if deck.is_sample %}Featured sample deck{% elif can_edit %}Deck editor{% else %}Public strategy{% endif %}</p>
+        <h1 data-deck-title>{% if deck %}{{ deck.name }}{% else %}Untitled Deck{% endif %}</h1>
+        {% if deck.is_sample %}<p class="builder-heading__description">{{ deck.description|default:"A read-only sample from the local Featured Deck Library." }}</p>{% endif %}
+    </div>
+    {% if deck.is_sample %}
+        <div class="sample-deck-actions">
+            <span aria-label="Deck format">{{ deck.format }}</span>
+            <a class="button button--ghost button--large" href="{% url 'decks_page:export' deck.pk %}" download>EXPORT .YDK</a>
+            {% if request.user.is_authenticated %}
+            <form method="post" action="{% url 'decks_page:copy-sample' deck.pk %}">{% csrf_token %}<button class="button button--gold button--large" type="submit">Copy to My Decks</button></form>
+            {% else %}
+            <a class="button button--gold button--large" href="{% url 'login' %}?next={{ request.path|urlencode }}">Sign in to copy</a>
+            {% endif %}
+        </div>
+    {% elif can_edit %}
+        <div class="builder-heading__guide"><strong>Drag mode</strong><span>ค้นหา → ลาก → วางลงในโซนเด็ค</span></div>
+    {% else %}
+        <div class="sample-deck-actions"><span aria-label="Deck format">{{ deck.format }}</span><a class="button button--ghost button--large" href="{% url 'decks_page:export' deck.pk %}" download>EXPORT .YDK</a></div>
+    {% endif %}
+</header>
+
+<div class="builder-layout" data-builder data-deck-id="{% if deck %}{{ deck.pk }}{% endif %}" data-can-edit="{{ can_edit|yesno:'true,false' }}">
+    <aside class="builder-panel builder-search-panel">
+        <div class="panel-heading"><div><small>Card library</small><h2>ค้นหาการ์ด</h2></div><span>ลากเพื่อเพิ่ม</span></div>
+        <label class="search-field search-field--compact">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <input class="transition-shadow focus-visible:ring-2 focus-visible:ring-arcane-gold/40 focus-visible:ring-offset-2 focus-visible:ring-offset-arcane-ink" type="search" data-card-search placeholder="Dark Magician…" {% if not can_edit %}disabled{% endif %}>
+        </label>
+        {% if can_edit %}<p class="builder-drag-instruction">ลากรูปการ์ดไปวางใน <strong>Main, Extra หรือ Side</strong></p>{% endif %}
+        <div class="builder-search-results" data-search-results>
+            {% if can_edit %}<p class="panel-hint">พิมพ์อย่างน้อย 2 ตัวอักษร แล้วลากการ์ดที่ต้องการ</p>{% else %}<p class="panel-hint">This public deck is read-only.</p>{% endif %}
+        </div>
+    </aside>
+
+    <div class="builder-content">
+        {% if can_edit %}
+        <section class="deck-toolbar" aria-label="Deck settings">
+            <header class="deck-toolbar__header">
+                <div><small>Deck setup</small><h2>ตั้งค่าเด็ค</h2></div>
+                {% if can_edit %}
+                <div class="deck-toolbar__actions">
+                    {% if deck %}<a class="button button--ghost" href="{% url 'decks_page:export' deck.pk %}" download>EXPORT .YDK</a>{% endif %}
+                    <button class="button button--danger" type="button" data-delete-deck {% if not deck %}hidden{% endif %}>ลบเด็ค</button>
+                    {% if deck %}<button class="button button--ghost" type="button" data-validate>ตรวจสอบเด็ค</button>{% endif %}
+                    <button class="button button--gold" type="button" data-save-deck>{% if deck %}บันทึกเด็ค{% else %}สร้างเด็ค{% endif %}</button>
+                </div>
+                {% endif %}
+            </header>
+            <div class="deck-toolbar__fields grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+                <label class="deck-field">ชื่อเด็ค<input class="text-arcane-ivory transition-shadow focus-visible:ring-2 focus-visible:ring-arcane-gold/40 focus-visible:ring-offset-2 focus-visible:ring-offset-arcane-ink" type="text" data-field="name" value="{% if deck %}{{ deck.name }}{% endif %}" placeholder="ตั้งชื่อเด็ค" {% if not can_edit %}disabled{% endif %}></label>
+                <label class="deck-field">ประเภทเด็ค<input class="text-arcane-ivory transition-shadow focus-visible:ring-2 focus-visible:ring-arcane-gold/40 focus-visible:ring-offset-2 focus-visible:ring-offset-arcane-ink" type="text" data-field="deck_type" value="{% if deck %}{{ deck.deck_type }}{% endif %}" placeholder="Control, Combo, Beatdown…" {% if not can_edit %}disabled{% endif %}></label>
+                <label class="deck-field deck-field--ruleset">Ban List
+                    <select class="transition-shadow focus-visible:ring-2 focus-visible:ring-arcane-gold/40 focus-visible:ring-offset-2 focus-visible:ring-offset-arcane-ink" data-field="ruleset" {% if not can_edit %}disabled{% endif %}>
+                        <option value="" data-format="{% if deck %}{{ deck.format }}{% else %}TCG{% endif %}"{% if deck %}{% if not deck.ban_list_id %} selected{% endif %}{% elif not default_ban_list_id %} selected{% endif %}>N/A</option>
+                        {% for ban_list in ban_lists %}
+                        <option value="{{ ban_list.pk }}" data-format="{{ ban_list.format }}" data-name="{{ ban_list.name }}" data-effective="{{ ban_list.effective_date|date:'Y-m-d' }}" data-source-url="{{ ban_list.source_url }}" data-current="{{ ban_list.is_active|yesno:'true,false' }}"{% if deck %}{% if deck.ban_list_id == ban_list.pk %} selected{% endif %}{% elif default_ban_list_id == ban_list.pk %} selected{% endif %}>{{ ban_list.format }}</option>
+                        {% endfor %}
+                    </select>
+                    <small class="banlist-effective" data-banlist-meta>N/A · ไม่ตรวจ Ban List</small>
+                </label>
+                <label class="deck-public transition-shadow hover:shadow-lg"><input class="peer" type="checkbox" data-field="is_public" {% if deck.is_public %}checked{% endif %} {% if not can_edit %}disabled{% endif %}><span class="peer-focus-visible:ring-2 peer-focus-visible:ring-arcane-gold/60" aria-hidden="true"></span><div><strong>เด็คสาธารณะ</strong><small>อนุญาตให้ผู้อื่นเปิดดู</small></div></label>
+                <label class="deck-field deck-field--description">คำอธิบายเด็ค
+                    <textarea class="text-arcane-ivory transition-shadow focus-visible:ring-2 focus-visible:ring-arcane-gold/40 focus-visible:ring-offset-2 focus-visible:ring-offset-arcane-ink" data-field="description" rows="2" placeholder="อธิบายแนวทางและจุดเด่นของเด็คนี้…" {% if not can_edit %}disabled{% endif %}>{% if deck %}{{ deck.description }}{% endif %}</textarea>
+                </label>
+            </div>
+            <div class="deck-toolbar__status">
+                <div class="validation-card" data-validation><span aria-hidden="true">◇</span><div><strong data-legality-status>{% if deck %}กำลังตรวจสอบ…{% else %}NOT CHECKED{% endif %}</strong><p>{% if deck %}กำลังตรวจสอบกฎและ Ban List{% else %}ตั้งชื่อแล้วสร้างเด็คเพื่อเริ่มเพิ่มการ์ด{% endif %}</p></div></div>
+                <p class="inline-feedback" data-builder-feedback aria-live="polite"></p>
+            </div>
+        </section>
+        {% endif %}
+
+        <section class="builder-workspace">
+            <div class="deck-zone" data-section="MAIN" data-drop-zone aria-label="Main Deck drop zone">
+                <div class="deck-zone__heading"><div><span>Main Deck</span><small>40–60 cards</small></div><strong data-count="MAIN">0</strong></div>
+                <div class="deck-zone__cards" data-zone-cards="MAIN"></div>
+            </div>
+            <div class="deck-zone deck-zone--small" data-section="EXTRA" data-drop-zone aria-label="Extra Deck drop zone">
+                <div class="deck-zone__heading"><div><span>Extra Deck</span><small>Up to 15</small></div><strong data-count="EXTRA">0</strong></div>
+                <div class="deck-zone__cards" data-zone-cards="EXTRA"></div>
+            </div>
+            <div class="deck-zone deck-zone--small" data-section="SIDE" data-drop-zone aria-label="Side Deck drop zone">
+                <div class="deck-zone__heading"><div><span>Side Deck</span><small>Up to 15</small></div><strong data-count="SIDE">0</strong></div>
+                <div class="deck-zone__cards" data-zone-cards="SIDE"></div>
+            </div>
+        </section>
+
+        {% if deck_breakdown %}
+        <section class="deck-insights" aria-labelledby="deck-insights-title">
+            <header class="deck-insights__header">
+                <div>
+                    <small>Deck breakdown</small>
+                    <h2 id="deck-insights-title">ภาพรวมสัดส่วนเด็ค</h2>
+                    <p>ดูสัดส่วน Archetype และประเภทการ์ดของเด็คนี้</p>
+                </div>
+                <span class="deck-insights__badge" aria-label="Visual summary"><span aria-hidden="true">◔</span> Visual Summary</span>
+            </header>
+
+            {% if deck_breakdown.total_cards %}
+            <div class="deck-insights__grid">
+                <article class="deck-chart deck-chart--archetype">
+                    <header><h3>Archetype Breakdown</h3><span>จำนวนรวมทุกโซน</span></header>
+                    <div class="archetype-bars">
+                        {% for item in deck_breakdown.archetypes %}
+                        <div class="archetype-bars__row">
+                            <div class="archetype-bars__label"><span title="{{ item.label }}">{{ item.label }}</span><strong>{{ item.count }}</strong></div>
+                            <div class="archetype-bars__track" aria-label="{{ item.label }} {{ item.count }} ใบ">
+                                <span style="width: {{ item.bar_percent }}%"></span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </article>
+
+                <article class="deck-chart deck-chart--type">
+                    <header><h3>Card Type Breakdown</h3><span>รวม {{ deck_breakdown.total_cards }} ใบ</span></header>
+                    <div class="card-type-chart">
+                        <div class="card-type-chart__donut">
+                            <svg viewBox="0 0 200 200" role="img" aria-label="สัดส่วนประเภทการ์ดทั้งหมด {{ deck_breakdown.total_cards }} ใบ">
+                                <circle class="card-type-chart__base" cx="100" cy="100" r="72" pathLength="100"></circle>
+                                {% for item in deck_breakdown.card_types %}
+                                <circle class="card-type-chart__segment card-type-chart__segment--{{ item.style }}" cx="100" cy="100" r="72" pathLength="100" stroke-dasharray="{{ item.percent }} {{ item.remainder }}" stroke-dashoffset="-{{ item.offset }}"></circle>
+                                {% endfor %}
+                            </svg>
+                            <div><strong>{{ deck_breakdown.total_cards }}</strong><span>CARDS</span></div>
+                        </div>
+                        <ul class="card-type-chart__legend">
+                            {% for item in deck_breakdown.card_types %}
+                            <li class="card-type-chart__legend-item card-type-chart__legend-item--{{ item.style }}">
+                                <span aria-hidden="true"></span><div><strong>{{ item.label }}</strong><small>{{ item.count }} ใบ · {{ item.percent }}%</small></div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </article>
+            </div>
+            {% else %}
+            <p class="deck-insights__empty">เด็คนี้ยังไม่มีการ์ดสำหรับสร้างกราฟ</p>
+            {% endif %}
+        </section>
+        {% endif %}
+    </div>
+</div>
+{% if deck_payload %}{{ deck_payload|json_script:"deck-data" }}{% endif %}
+{% endblock %}
+
+{% block extra_scripts %}<script src="{% static 'js/deck-builder.js' %}?v=20260901-3"></script>{% endblock %}

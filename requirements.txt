@@ -1,0 +1,5 @@
+Django==6.1
+django-tailwind[cookiecutter]==4.5.0
+Pillow==12.3.0
+requests==2.34.2
+psycopg[binary]>=3.2,<4

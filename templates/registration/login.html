@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Enter the Sanctum · Yu-Gi-Oh Deck Builder{% endblock %}
+{% block body_class %}auth-page{% endblock %}
+
+{% block content %}
+<section class="auth-layout">
+    <div class="auth-story auth-story--login">
+        <div class="auth-story__copy">
+            <p class="kicker"><span></span>Duelist access</p>
+            <h1>Enter the <em>Sanctum</em></h1>
+            <p>Your decks, collection, and saved strategies wait beyond the temple gate.</p>
+        </div>
+        <div class="login-monster" data-auth-monster aria-hidden="true">
+            <span class="login-monster__aura"></span>
+            <span class="login-monster__rune"></span>
+            <img src="{% static 'monsters/dark-magician-girl.png' %}" alt="" decoding="async">
+        </div>
+    </div>
+    <div class="auth-card">
+        <div><small>Welcome back</small><h2>Sign in</h2></div>
+        {% if form.errors %}<p class="form-error">The username or password is incorrect.</p>{% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <label class="field-label">Username{{ form.username }}</label>
+            <label class="field-label">Password{{ form.password }}</label>
+            {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+            <button class="button button--gold button--full" type="submit">Enter the archive</button>
+        </form>
+        <p class="auth-card__alternate"><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
+        <p class="auth-card__alternate">New duelist? <a href="{% url 'signup' %}">Create an account</a></p>
+    </div>
+</section>
+{% endblock %}

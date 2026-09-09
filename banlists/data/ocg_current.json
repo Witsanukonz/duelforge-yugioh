@@ -1,0 +1,797 @@
+{
+  "format": "OCG",
+  "name": "OCG - 2026-07-01",
+  "effective_date": "2026-07-01",
+  "source": "Konami Official Forbidden and Limited List (JP)",
+  "source_url": "https://www.yugioh-card.com/asia/play/forbidden-and-limited-list/",
+  "cards": [
+    {
+      "card_id": 20292186,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 91869203,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 20663556,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 44910027,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 38273745,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 27552504,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 62242678,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 34945480,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 95727991,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 8903700,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 11384280,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 32909498,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 50588353,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 62320425,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 25926710,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 3040496,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 88071625,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 71818935,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 52653092,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 85115440,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 59537380,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 86148577,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 4280258,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 21044178,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 88581108,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 27381364,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 59859086,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 16923472,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 15341821,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 77679716,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 92731385,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 69015963,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 52119435,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 79875176,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 75732622,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 22593417,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 3679218,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 61049315,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 54719828,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 90590303,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 35772782,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 63504681,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 58820923,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 78706415,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 93369354,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 23558733,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 9929398,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 70369116,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 63101919,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 34206604,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 68059897,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 14702066,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 83152482,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 34086406,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 85243784,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 73356503,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 57421866,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 41482598,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 44763025,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 17375316,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 35059553,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 74191942,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 42829885,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 55144522,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 23557835,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 31423101,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 57953380,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 54447022,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 60682203,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 69243953,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 79571449,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 63789924,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 24224830,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 70828912,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 42703248,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 72537897,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 76375976,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 34906152,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 85602018,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 27174286,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 5851097,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 93016201,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 61740673,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 23516703,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 3280747,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 64697231,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 80604092,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 87639778,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 32723153,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 17178486,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 28566710,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 1041278,
+      "status": "FORBIDDEN"
+    },
+    {
+      "card_id": 8633261,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 79606837,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 93156774,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 29302858,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 34022970,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 29301450,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 17412721,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 17209452,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 68304193,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 28642461,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 99937011,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 38814750,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 74586817,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 32731036,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 6602300,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 63542003,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 9674034,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 90241276,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 23434538,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 35844557,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 90361010,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 4928565,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 572850,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 37961969,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 74078255,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 91800273,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 90953320,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 91810826,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 7375867,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 94145021,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 75433814,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 43387895,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 17266660,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 6637331,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 33854624,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 80453041,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 33396948,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 44519536,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 7902349,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 8124921,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 70903634,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 94689206,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 24094258,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 10966439,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 32061192,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 20938824,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 60764609,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 96782886,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 30581601,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 77103950,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 33782437,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 1845204,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 19613556,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 81439173,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 85106525,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 13048472,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 84211599,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 6153210,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 23701465,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 80845034,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 30336082,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 66730191,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 83764718,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 99243014,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 7477101,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 52340444,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 32807846,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 72892473,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 98567237,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 73628505,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 11110587,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 18144507,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 75500286,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 7394770,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 73468603,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 65681983,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 68462976,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 45171524,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 1475311,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 44362883,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 32548318,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 92107604,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 27970830,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 2295440,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 41420027,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 90846359,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 53334471,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 83326048,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 82732705,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 24207889,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 58921041,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 23002292,
+      "status": "LIMITED"
+    },
+    {
+      "card_id": 72270339,
+      "status": "SEMI_LIMITED"
+    },
+    {
+      "card_id": 92248362,
+      "status": "SEMI_LIMITED"
+    },
+    {
+      "card_id": 36521307,
+      "status": "SEMI_LIMITED"
+    },
+    {
+      "card_id": 78872731,
+      "status": "SEMI_LIMITED"
+    },
+    {
+      "card_id": 13203964,
+      "status": "SEMI_LIMITED"
+    },
+    {
+      "card_id": 14558127,
+      "status": "SEMI_LIMITED"
+    },
+    {
+      "card_id": 35726888,
+      "status": "SEMI_LIMITED"
+    },
+    {
+      "card_id": 78058681,
+      "status": "SEMI_LIMITED"
+    },
+    {
+      "card_id": 49238328,
+      "status": "SEMI_LIMITED"
+    },
+    {
+      "card_id": 48130397,
+      "status": "SEMI_LIMITED"
+    },
+    {
+      "card_id": 46411259,
+      "status": "SEMI_LIMITED"
+    },
+    {
+      "card_id": 84749824,
+      "status": "SEMI_LIMITED"
+    },
+    {
+      "card_id": 40366667,
+      "status": "SEMI_LIMITED"
+    }
+  ]
+}
