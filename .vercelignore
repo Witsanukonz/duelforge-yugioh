@@ -13,5 +13,5 @@ theme/static_src/node_modules/
 .env.*
 !.env.example
 DB.png
-Yu-Gi-Oh Deck Builder.zip
+*.zip
 *.log
