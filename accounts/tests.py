@@ -183,6 +183,32 @@ class PasswordManagementTests(TestCase):
 
 
 class HomeAndLoginPresentationTests(TestCase):
+    def test_about_page_defaults_to_english_and_exposes_thai_toggle(self):
+        response = self.client.get(reverse("about"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "About <em>DUELFORGE</em>", html=True)
+        self.assertContains(response, 'data-language-option="th"')
+        self.assertContains(
+            response,
+            'data-language-option="en" aria-pressed="true"',
+        )
+        self.assertContains(response, 'data-language-copy="th" hidden')
+        self.assertContains(response, "Everything a duelist needs")
+        self.assertContains(response, "DUELFORGE คือเว็บแอปพลิเคชัน")
+
+    def test_about_link_is_available_in_global_and_home_navigation(self):
+        about_url = reverse("about")
+
+        about_response = self.client.get(about_url)
+        home_response = self.client.get(reverse("home"))
+
+        self.assertContains(
+            about_response,
+            f'href="{about_url}" aria-current="page">About</a>',
+        )
+        self.assertContains(home_response, f'href="{about_url}">About</a>')
+
     def test_base_layout_renders_global_soundtrack_player(self):
         response = self.client.get(reverse("home"))
 

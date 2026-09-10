@@ -37,6 +37,7 @@
             <a href="{% url 'decks_page:list' %}" {% if request.resolver_match.namespace == 'decks_page' %}aria-current="page"{% endif %}>Decks</a>
             <a href="{% url 'collects_page:list' %}" {% if request.resolver_match.namespace == 'collects_page' %}aria-current="page"{% endif %}>Collection</a>
             <a href="{% url 'banlists_page:list' %}" {% if request.resolver_match.namespace == 'banlists_page' %}aria-current="page"{% endif %}>Ban List</a>
+            <a href="{% url 'about' %}" {% if request.resolver_match.url_name == 'about' %}aria-current="page"{% endif %}>About</a>
         </nav>
 
         <div class="app-account items-center">

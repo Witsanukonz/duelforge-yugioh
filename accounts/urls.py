@@ -3,6 +3,7 @@ from django.urls import path
 from django.urls import reverse_lazy
 
 from .views import (
+    about_view,
     admin_dashboard_view,
     home_view,
     password_reset_confirm_view,
@@ -12,6 +13,12 @@ from .views import (
 
 
 urlpatterns = [
+    path(
+        'about/',
+        about_view,
+        name='about'
+    ),
+
     path(
         'dashboard/',
         admin_dashboard_view,

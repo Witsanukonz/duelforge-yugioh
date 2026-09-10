@@ -42,6 +42,10 @@ def home_view(request):
     })
 
 
+def about_view(request):
+    return render(request, "accounts/about.html")
+
+
 @staff_member_required(login_url="login")
 def admin_dashboard_view(request):
     user_model = get_user_model()

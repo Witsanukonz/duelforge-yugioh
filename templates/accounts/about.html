@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About DUELFORGE{% endblock %}
+{% block body_class %}about-page{% endblock %}
+
+{% block extra_head %}
+    <meta name="description" content="Learn about DUELFORGE, its Yu-Gi-Oh! deck-building tools, technology, data source, and developer.">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}?v=20260910-1">
+{% endblock %}
+
+{% block content %}
+<div class="about-language-switch" data-about-language-switch aria-label="Page language">
+    <span class="about-language-switch__label" aria-hidden="true">Language</span>
+    <div class="about-language-switch__buttons">
+        <button type="button" data-language-option="th" aria-pressed="false">TH</button>
+        <button class="is-active" type="button" data-language-option="en" aria-pressed="true">EN</button>
+    </div>
+</div>
+
+<section class="about-hero" aria-labelledby="about-title">
+    <div class="about-hero__copy">
+        <p class="kicker"><span></span>Yu-Gi-Oh! Deck Builder</p>
+        <h1 id="about-title">About <em>DUELFORGE</em></h1>
+        <p data-language-copy="en">
+            Explore thousands of Yu-Gi-Oh! cards, forge your own deck, manage your collection,
+            and prepare your strategy for TCG and OCG play. Everything a duelist needs,
+            forged into one place.
+        </p>
+        <p data-language-copy="th" hidden>
+            DUELFORGE คือเว็บแอปพลิเคชันสำหรับผู้เล่น Yu-Gi-Oh! ที่ช่วยให้ค้นหาข้อมูลการ์ด
+            สร้างและจัดการเด็ค จัดเก็บคอลเลกชัน และตรวจสอบเด็คตามกฎ Ban List ของ TCG และ OCG
+            ได้ภายในเว็บไซต์เดียว
+        </p>
+    </div>
+    <div class="about-hero__stat" aria-label="More than fourteen thousand cards">
+        <strong>14,000+</strong>
+        <span data-language-copy="en">Cards indexed</span>
+        <span data-language-copy="th" hidden>การ์ดในฐานข้อมูล</span>
+    </div>
+</section>
+
+<section class="about-section" id="about-project" aria-labelledby="about-project-title">
+    <header class="about-section__heading">
+        <p class="kicker"><span></span><span data-language-copy="en">The project</span><span data-language-copy="th" hidden>เกี่ยวกับโปรเจกต์</span></p>
+        <h2 id="about-project-title" data-language-copy="en">Built for every duelist</h2>
+        <h2 data-language-copy="th" hidden>สร้างขึ้นเพื่อผู้เล่นทุกคน</h2>
+    </header>
+
+    <div class="about-story-grid grid gap-6 lg:grid-cols-3">
+        <article class="about-story-card">
+            <span class="about-card-number">01</span>
+            <h3 data-language-copy="en">What is DUELFORGE?</h3>
+            <h3 data-language-copy="th" hidden>DUELFORGE คืออะไร?</h3>
+            <p data-language-copy="en">A web application for exploring card information, building decks, managing collections, discovering featured decks, and validating lists against TCG and OCG Ban Lists.</p>
+            <p data-language-copy="th" hidden>เว็บแอปพลิเคชันสำหรับค้นหาข้อมูลการ์ด สร้างเด็ค จัดการคอลเลกชัน สำรวจเด็คตัวอย่าง และตรวจสอบเด็คตาม Ban List ของ TCG และ OCG</p>
+        </article>
+        <article class="about-story-card">
+            <span class="about-card-number">02</span>
+            <h3 data-language-copy="en">Why was it created?</h3>
+            <h3 data-language-copy="th" hidden>สร้างขึ้นมาทำไม?</h3>
+            <p data-language-copy="en">To bring essential Yu-Gi-Oh! deck-building tools together in one place, making card search, deck organization, collection management, and restriction checks easier.</p>
+            <p data-language-copy="th" hidden>เพื่อรวบรวมเครื่องมือที่จำเป็นสำหรับการสร้างเด็ค Yu-Gi-Oh! ไว้ในแพลตฟอร์มเดียว ทำให้การค้นหาการ์ด จัดเด็ค จัดการคอลเลกชัน และตรวจข้อจำกัดทำได้สะดวกขึ้น</p>
+        </article>
+        <article class="about-story-card">
+            <span class="about-card-number">03</span>
+            <h3 data-language-copy="en">Who is it for?</h3>
+            <h3 data-language-copy="th" hidden>เหมาะสำหรับใคร?</h3>
+            <p data-language-copy="en">Both new and experienced duelists who want to study cards, experiment with deck building, manage their collection, and prepare for TCG or OCG play.</p>
+            <p data-language-copy="th" hidden>เหมาะสำหรับทั้งผู้เล่นใหม่และผู้เล่นที่มีประสบการณ์ ซึ่งต้องการศึกษาการ์ด ทดลองจัดเด็ค ดูแลคอลเลกชัน และเตรียมเด็คสำหรับรูปแบบ TCG หรือ OCG</p>
+        </article>
+    </div>
+</section>
+
+<section class="about-section" id="features" aria-labelledby="features-title">
+    <header class="about-section__heading about-section__heading--split">
+        <div>
+            <p class="kicker"><span></span><span data-language-copy="en">Core system</span><span data-language-copy="th" hidden>ระบบหลัก</span></p>
+            <h2 id="features-title" data-language-copy="en">Everything in one forge</h2>
+            <h2 data-language-copy="th" hidden>เครื่องมือครบในที่เดียว</h2>
+        </div>
+        <p data-language-copy="en">Eight connected features take a duelist from discovery to a playable deck.</p>
+        <p data-language-copy="th" hidden>แปดฟังก์ชันที่เชื่อมต่อกัน ตั้งแต่ค้นหาการ์ดจนถึงเด็คพร้อมเล่น</p>
+    </header>
+
+    <div class="about-feature-grid grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <article class="about-feature-card"><span>01</span><h3>Card Database</h3><p data-language-copy="en">Explore 14,000+ cards with type, Attribute, Level, ATK, DEF, Archetype, effects, and artwork.</p><p data-language-copy="th" hidden>สำรวจการ์ดกว่า 14,000 ใบ พร้อมประเภท ธาตุ เลเวล ATK, DEF, Archetype เอฟเฟกต์ และรูปภาพ</p></article>
+        <article class="about-feature-card"><span>02</span><h3>Search &amp; Filter</h3><p data-language-copy="en">Find useful cards quickly with progressive filters based on real card properties.</p><p data-language-copy="th" hidden>ค้นหาการ์ดได้รวดเร็วด้วยตัวกรองตามคุณสมบัติจริงของการ์ด</p></article>
+        <article class="about-feature-card"><span>03</span><h3>Deck Builder</h3><p data-language-copy="en">Drag and drop cards across Main, Extra, and Side Deck areas with clear placement rules.</p><p data-language-copy="th" hidden>ลากและวางการ์ดระหว่าง Main, Extra และ Side Deck พร้อมกฎการวางที่ชัดเจน</p></article>
+        <article class="about-feature-card"><span>04</span><h3>Collection</h3><p data-language-copy="en">Track owned quantities, card conditions, favorites, and personal notes.</p><p data-language-copy="th" hidden>บันทึกจำนวน สภาพการ์ด รายการโปรด และหมายเหตุส่วนตัว</p></article>
+        <article class="about-feature-card"><span>05</span><h3>TCG / OCG Ban List</h3><p data-language-copy="en">Review Forbidden, Limited, and Semi-Limited cards in a visual library.</p><p data-language-copy="th" hidden>ตรวจสอบการ์ด Forbidden, Limited และ Semi-Limited ในรูปแบบที่ดูง่าย</p></article>
+        <article class="about-feature-card"><span>06</span><h3>Deck Validation</h3><p data-language-copy="en">Check deck sizes, duplicate limits, placement rules, and Ban List restrictions.</p><p data-language-copy="th" hidden>ตรวจจำนวนการ์ด การ์ดซ้ำ ตำแหน่งเด็ค และข้อจำกัดจาก Ban List</p></article>
+        <article class="about-feature-card"><span>07</span><h3>Featured Decks</h3><p data-language-copy="en">Inspect character-inspired decks and copy a sample into your own library.</p><p data-language-copy="th" hidden>ดูเด็คตัวละครและคัดลอกเด็คตัวอย่างไปปรับแต่งในคลังของตนเอง</p></article>
+        <article class="about-feature-card"><span>08</span><h3>User Account</h3><p data-language-copy="en">Register, sign in, recover access, and securely manage personal decks and cards.</p><p data-language-copy="th" hidden>สมัครสมาชิก เข้าสู่ระบบ กู้คืนรหัสผ่าน และจัดการเด็คกับการ์ดส่วนตัว</p></article>
+    </div>
+</section>
+
+<div class="about-two-column grid gap-6 lg:grid-cols-2">
+    <section class="about-section about-panel" id="data-source" aria-labelledby="data-source-title">
+        <p class="kicker"><span></span><span data-language-copy="en">Living archive</span><span data-language-copy="th" hidden>คลังข้อมูล</span></p>
+        <h2 id="data-source-title" data-language-copy="en">Data source</h2>
+        <h2 data-language-copy="th" hidden>แหล่งข้อมูล</h2>
+        <p data-language-copy="en">Card information is imported from the YGOPRODeck Yu-Gi-Oh! API and stored in the application database for the Card Archive, Deck Builder, and related tools.</p>
+        <p data-language-copy="th" hidden>ข้อมูลการ์ดนำเข้าจาก YGOPRODeck Yu-Gi-Oh! API และจัดเก็บในฐานข้อมูลของระบบ เพื่อนำไปใช้กับ Card Archive, Deck Builder และเครื่องมือที่เกี่ยวข้อง</p>
+        <dl class="about-facts">
+            <div><dt>API</dt><dd>YGOPRODeck</dd></div>
+            <div><dt data-language-copy="en">Cards</dt><dt data-language-copy="th" hidden>จำนวนการ์ด</dt><dd>14,000+</dd></div>
+        </dl>
+    </section>
+
+    <section class="about-section about-panel" id="technology" aria-labelledby="technology-title">
+        <p class="kicker"><span></span><span data-language-copy="en">Under the hood</span><span data-language-copy="th" hidden>เทคโนโลยีเบื้องหลัง</span></p>
+        <h2 id="technology-title" data-language-copy="en">Technologies</h2>
+        <h2 data-language-copy="th" hidden>เทคโนโลยีที่ใช้</h2>
+        <p data-language-copy="en">DUELFORGE combines backend, frontend, database, and external API technologies in one practical web application.</p>
+        <p data-language-copy="th" hidden>DUELFORGE ผสานเทคโนโลยีด้าน Backend, Frontend, Database และ External API ไว้ในเว็บแอปพลิเคชันที่ใช้งานได้จริง</p>
+        <ul class="about-tech-list flex flex-wrap gap-3" aria-label="Project technologies">
+            <li>Python</li><li>Django</li><li>HTML5</li><li>Tailwind CSS</li>
+            <li>JavaScript</li><li>Relational Database</li><li>REST API</li><li>Git / GitHub</li>
+        </ul>
+    </section>
+</div>
+
+<section class="about-section about-purpose" id="purpose" aria-labelledby="purpose-title">
+    <div>
+        <p class="kicker"><span></span><span data-language-copy="en">Project purpose</span><span data-language-copy="th" hidden>วัตถุประสงค์ของโปรเจกต์</span></p>
+        <h2 id="purpose-title" data-language-copy="en">A practical full-stack study</h2>
+        <h2 data-language-copy="th" hidden>การเรียนรู้ Full-stack ผ่านระบบจริง</h2>
+    </div>
+    <div class="about-purpose__copy">
+        <p data-language-copy="en">DUELFORGE was created as a practical system for managing Yu-Gi-Oh! card and deck data by bringing card search, deck building, collection management, and restriction checks into a single experience.</p>
+        <p data-language-copy="th" hidden>DUELFORGE ถูกสร้างเป็นระบบที่ใช้งานได้จริงสำหรับจัดการข้อมูลการ์ดและเด็ค Yu-Gi-Oh! โดยรวมการค้นหาการ์ด การสร้างเด็ค การจัดการคอลเลกชัน และการตรวจข้อจำกัดไว้ในประสบการณ์เดียว</p>
+        <p data-language-copy="en">It demonstrates CRUD operations, authentication, relational database design, API integration, user permissions, responsive UI design, and automated testing.</p>
+        <p data-language-copy="th" hidden>โปรเจกต์แสดงการประยุกต์ใช้ CRUD, Authentication, การออกแบบฐานข้อมูลเชิงสัมพันธ์, การเชื่อมต่อ API, การจัดการสิทธิ์ผู้ใช้, Responsive UI และ Automated Testing</p>
+    </div>
+</section>
+
+<section class="about-section about-developer" id="developer" aria-labelledby="developer-title">
+    <div class="about-developer__portrait">
+        <img src="https://github.com/WitsanuTun/mc-plugins/blob/main/face-nomove.jpg?raw=true" alt="Witsanukorn Kenprakong" loading="lazy">
+    </div>
+    <div class="about-developer__details">
+        <p class="kicker"><span></span><span data-language-copy="en">The developer</span><span data-language-copy="th" hidden>ผู้พัฒนา</span></p>
+        <h2 id="developer-title" data-language-copy="en">Witsanukorn Kenprakong</h2>
+        <h2 data-language-copy="th" hidden>นายวิษณุกร เคณประคอง</h2>
+        <p class="about-developer__intro" data-language-copy="en">My name is Khaitun. I developed DUELFORGE as a full-stack course project.</p>
+        <p class="about-developer__intro" data-language-copy="th" hidden>ผมชื่อไข่ตุ๋นครับ ผมพัฒนา DUELFORGE เป็นโปรเจกต์รายวิชาแบบ Full-stack</p>
+        <dl class="about-profile-grid grid gap-4 sm:grid-cols-2">
+            <div><dt>Student ID</dt><dd>68114640697</dd></div>
+            <div><dt>Role</dt><dd>Full-stack Developer</dd></div>
+            <div><dt data-language-copy="en">Major</dt><dt data-language-copy="th" hidden>สาขา</dt><dd data-language-copy="en">Information and Communication Technology (ICT)</dd><dd data-language-copy="th" hidden>เทคโนโลยีสารสนเทศและการสื่อสาร (ICT)</dd></div>
+            <div><dt data-language-copy="en">University</dt><dt data-language-copy="th" hidden>มหาวิทยาลัย</dt><dd data-language-copy="en">Ubon Ratchathani University</dd><dd data-language-copy="th" hidden>มหาวิทยาลัยอุบลราชธานี</dd></div>
+        </dl>
+        <div class="about-contact flex flex-wrap gap-3" id="contact">
+            <a href="mailto:Witsanukon.ke.68@ubu.ac.th">Witsanukon.ke.68@ubu.ac.th</a>
+            <a href="https://github.com/Witsanukonz" target="_blank" rel="noopener noreferrer">GitHub · Witsanukonz</a>
+        </div>
+    </div>
+</section>
+
+<div class="about-legal-grid grid gap-6 lg:grid-cols-2">
+    <section class="about-section about-legal" id="credits" aria-labelledby="credits-title">
+        <span class="about-card-number">Credits</span>
+        <h2 id="credits-title" data-language-copy="en">Card data</h2>
+        <h2 data-language-copy="th" hidden>ข้อมูลการ์ด</h2>
+        <p data-language-copy="en">DUELFORGE uses card data provided by the YGOPRODeck Yu-Gi-Oh! API for the Card Archive and card-related features.</p>
+        <p data-language-copy="th" hidden>DUELFORGE ใช้ข้อมูลการ์ดจาก YGOPRODeck Yu-Gi-Oh! API สำหรับ Card Archive และฟังก์ชันต่าง ๆ ที่เกี่ยวข้องกับการ์ด</p>
+    </section>
+    <section class="about-section about-legal" id="disclaimer" aria-labelledby="disclaimer-title">
+        <span class="about-card-number">Disclaimer</span>
+        <h2 id="disclaimer-title" data-language-copy="en">Educational project</h2>
+        <h2 data-language-copy="th" hidden>โปรเจกต์เพื่อการศึกษา</h2>
+        <p data-language-copy="en">DUELFORGE is an unofficial fan-made project created for educational purposes. Yu-Gi-Oh!, its card artwork, characters, trademarks, and related properties belong to their respective owners. This project is not affiliated with or endorsed by KONAMI.</p>
+        <p data-language-copy="th" hidden>DUELFORGE เป็นแฟนโปรเจกต์ที่จัดทำเพื่อการศึกษา ชื่อ Yu-Gi-Oh! รูปภาพการ์ด ตัวละคร เครื่องหมายการค้า และทรัพย์สินที่เกี่ยวข้องเป็นสิทธิ์ของเจ้าของแต่ละราย โปรเจกต์นี้ไม่มีความเกี่ยวข้องหรือได้รับการรับรองจาก KONAMI</p>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{% static 'js/about.js' %}?v=20260910-1"></script>
+{% endblock %}
